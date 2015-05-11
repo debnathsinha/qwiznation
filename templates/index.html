@@ -1,0 +1,99 @@
+<html>
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google" value="notranslate">
+    <title>Cards Layout v1</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="thumbnail">
+                    <img src="http://www.keenthemes.com/preview/metronic/theme/assets/global/plugins/jcrop/demos/demo_files/image2.jpg" class="">
+                    <div class="caption text-center">
+                        <h3 class="">When is the Business &amp; Entrepreneurs Workshop?</h3>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <h3><span class="label label-info">Jun 12</span></h3>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <h3><span class="label label-info">Jun 13</span></h3>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <h3><span class="label label-info">Jun 14</span></h3>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <h3><span class="label label-info">Jun 15</span></h3>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/row-->
+        <hr>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="thumbnail">
+                    <img src="http://www.online-image-editor.com//styles/2014/images/example_image.png" class="">
+                    <div class="caption text-center">
+                        <h3 class="">Is this guy going?</h3>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <button class="btn btn-success btn-block">
+                                    <h3>Yes!</h3>
+                                </button>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <button class="btn btn-danger btn-block">
+                                    <h3>No &#58;&#40;</h3>
+                                </button>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <button class="btn btn-warning btn-block">
+                                    <h3>Maybe?</h3>
+                                </button>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <button class="btn btn-primary btn-block">
+                                    <h3>Never ...</h3>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/row-->
+    </div>
+    <!--/container -->
+
+{% for quiz in quizes %}
+<div>{{quiz.name}}</div>
+{% endfor %}
+
+<form action="" method="post" accept-charset="utf-8">
+  <p><input type="text" name="message" value="" id="message"></p>
+  <p><input type="submit" value="Start!"></p>
+</form>
+
+
+<iframe height="100%" width="100%" allowtransparency="false" allowfullscreen="true" frameborder="0" scrolling="no" style="border: none;height: 100% !important;width: 100% !important;" src="https://app.qzzr.com/quiz/2943/widget?embedded_url=https%3A%2F%2Fblog.kissmetrics.com%2Ftech-entrepreneur-quiz%2F&amp;referrer=https%3A%2F%2Fwww.qzzr.com%2Fblog%2Fmake-quiz-like-buzzfeed%2F&amp;js_embed=true&amp;redirect=true"></iframe>
+</body>
+
+</html>
