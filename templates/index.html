@@ -55,7 +55,19 @@
 
 {% raw %}
 	<div ng-controller="QwController">
-	  {{name}}
+	  {{quiz.name}}
+	  <ul ng-repeat="question in quiz.questions">
+	    <li>{{question.text}}</li>
+	    <ul ng-repeat="answer in question.answers">
+	      <li>
+		{{answer}}
+	      </li>
+	    </ul>
+	  </ul>
+	</div>
+	      
+	    
+	  
 {% endraw %}
 
 	  <form action="" method="post" accept-charset="utf-8">
