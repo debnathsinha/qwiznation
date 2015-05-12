@@ -9,12 +9,20 @@
     <title>Cards Layout v1</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
-
+    <script src="/assets/js/angular.js"></script>
 </head>
 
-<body>
+<body ng-app="qw">
+      <hr>
+      {% raw %}
+      <div ng-controller="QwHeaderController">
+	<h1>Hello  {{yourName}} !</h1>
+      </div>
+      {% endraw %}
+
     <br>
     <div class="container">
+      {% for quiz in quizes %}
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
@@ -43,55 +51,36 @@
             </div>
         </div>
         <!--/row-->
-        <hr>
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="thumbnail">
-                    <img src="http://www.online-image-editor.com//styles/2014/images/example_image.png" class="">
-                    <div class="caption text-center">
-                        <h3 class="">Is this guy going?</h3>
+	{% endfor %}
 
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6">
-                                <button class="btn btn-success btn-block">
-                                    <h3>Yes!</h3>
-                                </button>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <button class="btn btn-danger btn-block">
-                                    <h3>No &#58;&#40;</h3>
-                                </button>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <button class="btn btn-warning btn-block">
-                                    <h3>Maybe?</h3>
-                                </button>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <button class="btn btn-primary btn-block">
-                                    <h3>Never ...</h3>
-                                </button>
-                            </div>
-                        </div>
+{% raw %}
+	<div ng-controller="QwController">
+	  {{name}}
+{% endraw %}
 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/row-->
-    </div>
-    <!--/container -->
+	  <form action="" method="post" accept-charset="utf-8">
+	    <p><input type="text" name="name" placeholder="Name" id="name"></p>
+	    <p><input type="text" name="result" placeholder="Result" id="result"></p>
+	  </form>
 
-{% for quiz in quizes %}
-<div>{{quiz.name}}</div>
-{% endfor %}
+	  {% for question in questionsperquiz %}
+	  <p>
+	    <input type="text" name="question{{loop.index}}text" placeholder="Question {{loop.index}}" id="question{{loop.index}}text">
+	    <input type="text" name="question{{loop.index}}picurl" placeholder="Picture URL" id="question{{loop.index}}picurl">
+	    <input type="text" name="question{{loop.index}}correctanswer" placeholder="Correct Answer" id="question{{loop.index}}correctanswer">
+	    <p>
+	    	<input type="text" name="answer{{loop.index}}1text" placeholder="Answer {{loop.index}}" id="answer{{loop.index}}1text">
+	    	<input type="text" name="answer{{loop.index}}2text" placeholder="Answer {{loop.index}}" id="answer{{loop.index}}2text">
+	    	<input type="text" name="answer{{loop.index}}3text" placeholder="Answer {{loop.index}}" id="answer{{loop.index}}3text">
+	    	<input type="text" name="answer{{loop.index}}4text" placeholder="Answer {{loop.index}}" id="answer{{loop.index}}4text">
+	    </p>
+	  </p>
+	  {% endfor %}
+	  <p><input type="submit" value="Submit"></p>
+	</form>
 
-<form action="" method="post" accept-charset="utf-8">
-  <p><input type="text" name="message" value="" id="message"></p>
-  <p><input type="submit" value="Start!"></p>
-</form>
-
+	
+	<script src="/assets/js/app.js"></script>
 </body>
 
 </html>

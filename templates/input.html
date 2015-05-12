@@ -1,4 +1,101 @@
+<html>
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google" value="notranslate">
+    <title>Cards Layout v1</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <br>
+
+      {% for quiz in quizes %}
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="thumbnail">
+                    <img src="http://www.keenthemes.com/preview/metronic/theme/assets/global/plugins/jcrop/demos/demo_files/image2.jpg" class="">
+                    <div class="caption text-center">
+                        <h3 class="">When is the Business &amp; Entrepreneurs Workshop?</h3>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <h3><span class="label label-info">Jun 12</span></h3>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <h3><span class="label label-info">Jun 13</span></h3>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <h3><span class="label label-info">Jun 14</span></h3>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <h3><span class="label label-info">Jun 15</span></h3>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/row-->
+	{% endfor %}
+
 <form action="" method="post" accept-charset="utf-8">
-  <p><input type="text" name="message" value="" id="message"></p>
-  <p><input type="submit" value=""></p>
+  <p><input type="text" name="name" value="" id="name"></p>
+  <p>
+    <input type="text" name="question1text" value="" id="question1text">
+    <p>
+    	<input type="text" name="answer11text" value="" id="answer11text">
+    	<input type="text" name="answer12text" value="" id="answer12text">
+    	<input type="text" name="answer13text" value="" id="answer13text">
+    	<input type="text" name="answer14text" value="" id="answer14text">
+    </p>
+  </p>
+  <p>
+    <input type="text" name="question2text" value="" id="question2text">
+    <p>
+    	<input type="text" name="answer21text" value="" id="answer21text">
+    	<input type="text" name="answer22text" value="" id="answer22text">
+    	<input type="text" name="answer23text" value="" id="answer23text">
+    	<input type="text" name="answer24text" value="" id="answer24text">
+    </p>
+  </p>
+  <p>
+    <input type="text" name="question3text" value="" id="question3text">
+    <p>
+    	<input type="text" name="answer31text" value="" id="answer31text">
+    	<input type="text" name="answer32text" value="" id="answer32text">
+    	<input type="text" name="answer33text" value="" id="answer33text">
+    	<input type="text" name="answer34text" value="" id="answer34text">
+    </p>
+  </p>
+  <p>
+    <input type="text" name="question4text" value="" id="question4text">
+    <p>
+    	<input type="text" name="answer41text" value="" id="answer41text">
+    	<input type="text" name="answer42text" value="" id="answer42text">
+    	<input type="text" name="answer43text" value="" id="answer43text">
+    	<input type="text" name="answer44text" value="" id="answer44text">
+    </p>
+  </p>
+  <p>
+    <input type="text" name="question5text" value="" id="question5text">
+    <p>
+    	<input type="text" name="answer51text" value="" id="answer51text">
+    	<input type="text" name="answer52text" value="" id="answer52text">
+    	<input type="text" name="answer53text" value="" id="answer53text">
+    	<input type="text" name="answer54text" value="" id="answer54text">
+    </p>
+  </p>
+  <p><input type="submit" value="Submit"></p>
 </form>
+
+</body>
+
+</html>
