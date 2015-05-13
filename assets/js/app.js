@@ -1,6 +1,26 @@
 angular.module('qw', [])
-.controller('QwController', function($scope) {
+.controller('QwController', function($scope, $http) {
     $scope.name = "Game of Thrones";
+    // $http.get('quiz')
+    // .success(function(data) {
+    // 	console.log(data);
+    // })
+    // .error(function(msg) {
+    // 	console.log(msg);
+    // });
+
+    $scope.question = {
+	title: "Is Winter coming?",
+	picUrl: "http://www.online-image-editor.com//styles/2014/images/example_image.png",
+	answers: [
+	    "Yes",
+	    "No",
+	    "Maybe",
+	    "Never"
+	]
+    };
+    console.log($scope.question.title);
+
     $scope.quiz = {
 	name: 'Game of Thrones',
 	result: 'Winter is coming!',

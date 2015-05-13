@@ -26,6 +26,14 @@ class Question(ndb.Model):
 class Answer(ndb.Model):
     text = ndb.StringProperty()
 
+class QuizListViewPage(webapp2.RequestHandler):
+    def get(self):
+        pass
+
+class QuizDetailPage(webapp2.RequestHandler):
+    def get(self, quiz_id):
+        print quiz_id
+
 class NewQuizPage(webapp2.RequestHandler):
     def get(self):
         template = JINJA_ENV.get_template('new.html')
@@ -95,7 +103,8 @@ app = webapp2.WSGIApplication([
     ('/', MainPage),
     (r'/new', NewQuizPage),
     (r'/api/quiz/', QuizAPIPage),
-    (r'/quiz/(\d+)', QuizPage),
+    (r'/quiz', QuizListViewPage),
+    (r'/quiz/(\d+)', QuizDetailPage),
     (r'/api/question/', QuestionPage),
     (r'/api/answer/', AnswerPage)
 ], debug=True)
