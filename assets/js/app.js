@@ -26,7 +26,7 @@ angular.module('qw', [])
 	result: 'Winter is coming!',
 	questions: [
 	    {
-		text: 'Is winter coming?',
+		text: 'Which house does Joffrey belong to?',
 		pictureUrl: 'http://www.keenthemes.com/preview/metronic/theme/assets/global/plugins/jcrop/demos/demo_files/image2.jpg',
 		correctAnswer: 1,
 		answers: [
@@ -35,7 +35,7 @@ angular.module('qw', [])
 		]
 	    },
 	    {
-		text: 'Who is the Kingslayer?',
+		text: 'What is the name of the central Bank?',
 		pictureUrl: 'http://www.keenthemes.com/preview/metronic/theme/assets/global/plugins/jcrop/demos/demo_files/image2.jpg',
 		correctAnswer: 3,
 		answers: [
@@ -46,7 +46,7 @@ angular.module('qw', [])
 		]
 	    },
 	    {
-		text: 'What is the name of the Bank?',
+		text: "What is Sean Bean's name in the series?",
 		pictureUrl:'http://www.keenthemes.com/preview/metronic/theme/assets/global/plugins/jcrop/demos/demo_files/image2.jpg',
 		correctAnswer: 1,
 		answers: [
@@ -57,6 +57,36 @@ angular.module('qw', [])
 		]
 	    }]
     }
+
+    $scope.currentQuestion = $scope.quiz.questions[0];
+
+    function isCurrentQuestionActive(question) {
+	return $scope.currentQuestion == question;
+    }
+
+    function setCurrentQuestion(question) {
+	$scope.currentQuestion = question;
+    }
+
+    $scope.isCurrentQuestionActive = isCurrentQuestionActive;
+    $scope.setCurrentQuestion = setCurrentQuestion;
+
+    $scope.createNewQuestion = function() {
+	var question = {
+	    text: "Enter Question Text here",
+	    pictureUrl: "http://www.keenthemes.com/preview/metronic/theme/assets/global/plugins/jcrop/demos/demo_files/image2.jpg",
+	    correctAnswer: 1,
+	    answers: [
+		'Answer 1',
+		'Answer 2',
+		'Answer 3',
+		'Answer 4'
+	    ]
+	}
+	$scope.quiz.questions.push(question);
+	$scope.setCurrentQuestion(question);
+    }
+
 })
 .controller('QwHeaderController', function($scope) {
     $scope.yourName = "Debnath";

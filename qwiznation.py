@@ -39,6 +39,11 @@ class NewQuizPage(webapp2.RequestHandler):
         template = JINJA_ENV.get_template('new.html')
         self.response.write(template.render())
 
+class AdminPage(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENV.get_template("newadmin.html")
+        self.response.write(template.render())
+
 class MainPage(webapp2.RequestHandler):
     def get(self):
         quizes = Quiz.query().fetch()
@@ -101,6 +106,7 @@ class AnswerPage(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
+    (r'/admin', AdminPage),
     (r'/new', NewQuizPage),
     (r'/api/quiz/', QuizAPIPage),
     (r'/quiz', QuizListViewPage),

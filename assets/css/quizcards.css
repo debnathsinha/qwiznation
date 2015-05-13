@@ -590,3 +590,17 @@ div #quizcard {
 .create-new {
     vertical-align: middle;
 }
+
+body {
+    background-color: white;
+}
+
+.nav.navbar-nav.side-nav {
+    background-color: white;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, 
+.navbar-inverse .navbar-nav>.active>a:hover {
+    background-color: white;
+    color: black;
+}
