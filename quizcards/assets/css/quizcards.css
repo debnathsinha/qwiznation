@@ -1,6 +1,7 @@
 /******************************************************
   UTILITIES
 ********************************************************/
+/* WIDTH */
 
 .width-10pc {
     width: 10% !important;
@@ -129,6 +130,7 @@
 .width-500 {
     width: 500px !important;
 }
+/* MARGIN */
 
 .margin-0 {
     margin: 0 !important;
@@ -306,6 +308,7 @@
 .padding-top-20 {
     padding-top: 20px !important;
 }
+/* PADDING */
 
 .padding-bottom-20 {
     padding-bottom: 20px !important;
@@ -481,18 +484,9 @@ div #quizcard {
     -moz-transform: scale(.1, .1);
     /* Firefox */
 }
-
-.properties-sidebar {
-    border: 0px !important;
-}
-
-.question-section {
-    border-bottom: 1px solid #ddd;
-}
-/*
-.answer-button {
-    margin: 5px;
-}*/
+/******************************************************
+  MODAL SIZING AND OTHER PROPERTIES
+********************************************************/
 
 .modal-dialog {
     width: 100%;
@@ -522,8 +516,73 @@ div #quizcard {
 .modal-body {
     padding: 0px;
 }
+/******************************************************
+  MEDIA QUERIES FOR RESIZING FONTS AND IMAGE SIZES
+********************************************************/
 
-.smallpicture {
-    height: auto;
-    width: 50%;
+@media (max-width: 480px) {
+    /*
+    .navbar li a{
+    font-size:14px;
+    }
+*/
+    
+    .smallpicture {
+        height: auto;
+        width: 50%;
+    }
 }
+
+@media (min-width: 481px) and (max-width: 767px) {
+    /*
+    .navbar li a{
+    font-size:20px;
+    }
+*/
+    
+    .smallpicture {
+        height: auto;
+        width: 45%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    /*
+    .navbar li a{
+    font-size:26px;
+    }
+*/
+    
+    .smallpicture {
+        height: auto;
+        width: 40%;
+    }
+}
+
+@media (min-width: 980px) {
+    /*
+  .navbar li a{
+  font-size:30px;
+  }
+*/
+    
+    .smallpicture {
+        height: auto;
+        width: 50%;
+    }
+}
+/******************************************************
+  MISCELLANEOUS
+********************************************************/
+
+.properties-sidebar {
+    border: 0px !important;
+}
+
+.question-section {
+    border-bottom: 1px solid #ddd;
+}
+/*
+.answer-button {
+    margin: 5px;
+}*/
