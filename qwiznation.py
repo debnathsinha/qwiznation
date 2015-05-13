@@ -33,6 +33,9 @@ class QuizListViewPage(webapp2.RequestHandler):
 class QuizDetailPage(webapp2.RequestHandler):
     def get(self, quiz_id):
         print quiz_id
+        
+    def post(self):
+        print self.request.get("content")
 
 class NewQuizPage(webapp2.RequestHandler):
     def get(self):
