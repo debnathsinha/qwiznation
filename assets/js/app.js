@@ -9,54 +9,29 @@ angular.module('qw', [])
     // 	console.log(msg);
     // });
 
-    $scope.question = {
-	title: "Is Winter coming?",
-	picUrl: "http://www.online-image-editor.com//styles/2014/images/example_image.png",
-	answers: [
-	    "Yes",
-	    "No",
-	    "Maybe",
-	    "Never"
-	]
-    };
-    console.log($scope.question.title);
-
     $scope.quiz = {
-	name: 'Game of Thrones',
-	result: 'Winter is coming!',
+	name: 'Enter the name of the quiz',
+	result: 'Enter the question result',
 	questions: [
 	    {
-		text: 'Which house does Joffrey belong to?',
+		text: 'Enter the question',
 		pictureUrl: 'http://www.keenthemes.com/preview/metronic/theme/assets/global/plugins/jcrop/demos/demo_files/image2.jpg',
 		correctAnswer: 1,
 		answers: [
-		    'Yes',
-		    'No'
-		]
-	    },
-	    {
-		text: 'What is the name of the central Bank?',
-		pictureUrl: 'http://www.keenthemes.com/preview/metronic/theme/assets/global/plugins/jcrop/demos/demo_files/image2.jpg',
-		correctAnswer: 3,
-		answers: [
-		    'Tywin Lannister',
-		    'Tyrion Lannister',
-		    'Jamie Lannister',
-		    'Cersei Lannister'
-		]
-	    },
-	    {
-		text: "What is Sean Bean's name in the series?",
-		pictureUrl:'http://www.keenthemes.com/preview/metronic/theme/assets/global/plugins/jcrop/demos/demo_files/image2.jpg',
-		correctAnswer: 1,
-		answers: [
-		    'Iron Bank',
-		    'Gold Bank',
-		    'Lannister Bank',
-		    'Bank of America'
+		    'Answer 1',
+		    'Answer 2',
+		    'Answer 3',
+		    'Answer 4'
 		]
 	    }]
     }
+
+    $http.get("/api/quiz/1")
+    .success(function(response) {
+	console.log(response);
+	$scope.quiz = response;
+	$scope.currentQuestion = $scope.quiz.questions[0];
+    });
 
     $scope.currentQuestion = $scope.quiz.questions[0];
 
@@ -86,6 +61,12 @@ angular.module('qw', [])
 	$scope.quiz.questions.push(question);
 	$scope.setCurrentQuestion(question);
     }
+
+    function answerSelected(index) {
+	console.log("Answer selected" + index); 
+    }
+
+    $scope.answerSelected = answerSelected;
 
 })
 .controller('QwHeaderController', function($scope) {

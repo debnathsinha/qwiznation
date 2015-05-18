@@ -2,7 +2,9 @@ import webapp2
 import pdb
 import os
 import jinja2
+import json
 from google.appengine.ext import ndb
+from pprint import pprint
 
 ROOT_PATH = os.path.dirname(__file__)
 GMAILYTICS_TEMPLATE_PATH = os.path.join(ROOT_PATH,"templates") 
@@ -28,13 +30,16 @@ class Answer(ndb.Model):
 
 class QuizListViewPage(webapp2.RequestHandler):
     def get(self):
+        template = JINJA_ENV.get_template("quiz.html")
+        self.response.write(template.render())
+    def post(self):
         pass
 
 class QuizDetailPage(webapp2.RequestHandler):
     def get(self, quiz_id):
         print quiz_id
         
-    def post(self):
+    def post(self, quiz_id):
         print self.request.get("content")
 
 class NewQuizPage(webapp2.RequestHandler):
@@ -90,14 +95,26 @@ class MainPage(webapp2.RequestHandler):
                 print answer
         self.redirect('/')
 
-class QuizAPIPage(webapp2.RequestHandler):
-    def get(self):
+class QuizAPIDetailPage(webapp2.RequestHandler):
+    def get(self, quiz_id):
+        # Get a particular quiz
+        quiz=open('samplequiz.json').read()
+        quiz = json.loads(quiz)
+        self.response.headers['Content-Type'] = "application/json"
+        self.response.write(json.dumps(quiz))
+
+    def post(self):
+        # Edit/update an existing quiz
         pass
 
-class QuizPage(webapp2.RequestHandler):
+class QuizAPIListPage(webapp2.RequestHandler):
     def get(self, quiz_id):
+        # Get the previews of all the quizzes
         print quiz_id
-        pass
+
+    def post(self, quiz_id):
+        # Create a new quiz
+        pass        
 
 class QuestionPage(webapp2.RequestHandler):
     def get(self):
@@ -110,10 +127,11 @@ class AnswerPage(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     (r'/admin', AdminPage),
-    (r'/new', NewQuizPage),
-    (r'/api/quiz/', QuizAPIPage),
+    (r'/quiz/new', NewQuizPage),
     (r'/quiz', QuizListViewPage),
     (r'/quiz/(\d+)', QuizDetailPage),
+    (r'/api/quiz', QuizAPIListPage),
+    (r'/api/quiz/(\d+)', QuizAPIDetailPage),
     (r'/api/question/', QuestionPage),
     (r'/api/answer/', AnswerPage)
 ], debug=True)

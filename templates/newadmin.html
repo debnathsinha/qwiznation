@@ -88,23 +88,23 @@
                             <div class="caption text-center">
                                 <h3 class="">{{currentQuestion.text}}</h3>
                                 <div class="row">
-                                    <div class="col-xs-12 col-md-6">
+                                    <div class="col-xs-12 col-md-6" ng-click="answerSelected(0)">
                                         <button class="btn btn-default btn-block answer-button">
                                             <h3>{{currentQuestion.answers[0]}}</h3>
                                         </button>
                                     </div>
                                     <div class="col-xs-12 col-md-6">
-                                        <button class="btn btn-default btn-block answer-button">
+                                        <button class="btn btn-default btn-block answer-button" ng-click="answerSelected(1)">
                                             <h3>{{currentQuestion.answers[1]}}</h3>
                                         </button>
                                     </div>
                                     <div class="col-xs-12 col-md-6">
-                                        <button class="btn btn-default btn-block answer-button">
+                                        <button class="btn btn-default btn-block answer-button" ng-click="answerSelected(2)">
                                             <h3>{{currentQuestion.answers[2]}}</h3>
                                         </button>
                                     </div>
                                     <div class="col-xs-12 col-md-6">
-                                        <button class="btn btn-default btn-block answer-button">
+                                        <button class="btn btn-default btn-block answer-button" ng-click="answerSelected(3)">
                                             <h3>{{currentQuestion.answers[3]}}</h3>
                                         </button>
                                     </div>
