@@ -49,7 +49,7 @@ class NewQuizPage(webapp2.RequestHandler):
 
 class AdminPage(webapp2.RequestHandler):
     def get(self):
-        template = JINJA_ENV.get_template("newadmin.html")
+        template = JINJA_ENV.get_template("admin.html")
         self.response.write(template.render())
 
 class MainPage(webapp2.RequestHandler):
