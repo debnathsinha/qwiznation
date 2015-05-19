@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>Quiz Nation</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -57,7 +57,7 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    <li>
                         <a href="/admin"><i class="fa fa-fw fa-dashboard"></i> Quiz</a>
                     </li>
                     <li>
@@ -72,6 +72,8 @@
 
             <div class="container-fluid">
 
+	      {% block content %}
+	      {% endblock %}
 
             </div>
             <!-- /.container-fluid -->

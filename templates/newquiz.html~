@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>QN Admin - Bootstrap Admin Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS  -->
+    <link href="../assets/css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../assets/css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Toggle CSS -->
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+    <script src="/assets/js/angular.js"></script>
+    <link rel="stylesheet" href="assets/css/quizcards.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body ng-app="qw" ng-cloak>
+{% raw %}
+    <div id="wrapper" ng-controller="QwController">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">QuizNation</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith</a>
+                </li>
+            </ul>
+
+
+
+	    
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li ng-repeat="question in quiz.questions" ng-class="{'active':isCurrentQuestionActive(question)}">
+                        <a ng-click="setCurrentQuestion(question)"><span class="badge">{{$index+1}}</span>&nbsp; {{question.text}}</a>
+                    </li>
+                    <li>
+                        <a ng-click="createNewQuestion()"><i class="fa fa-2x fa-fw fa-plus" style="vertical-align: middle;"></i>Create New</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="thumbnail">
+                            <img ng-src="{{currentQuestion.pictureUrl}}" class="">
+                            <div class="caption text-center">
+                                <h3 class="">{{currentQuestion.text}}</h3>
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6" ng-click="answerSelected(0)">
+                                        <button class="btn btn-default btn-block answer-button">
+                                            <h3>{{currentQuestion.answers[0]}}</h3>
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <button class="btn btn-default btn-block answer-button" ng-click="answerSelected(1)">
+                                            <h3>{{currentQuestion.answers[1]}}</h3>
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <button class="btn btn-default btn-block answer-button" ng-click="answerSelected(2)">
+                                            <h3>{{currentQuestion.answers[2]}}</h3>
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <button class="btn btn-default btn-block answer-button" ng-click="answerSelected(3)">
+                                            <h3>{{currentQuestion.answers[3]}}</h3>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                            Launch demo modal
+                        </button>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Properties</div>
+                            <li class="list-group-item properties-sidebar">
+                                <p>Title Picture</p>
+                                <input type="text" class="form-control" placeholder="URL to your title picture ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.pictureUrl">
+                            </li>
+                            <li class="list-group-item properties-sidebar question-section">
+                                <p>Question Text</p>
+                                <input type="text" class="form-control" placeholder="140 character limit!" aria-describedby="sizing-addon3" ng-model="currentQuestion.text">
+                            </li>
+                            <li class="list-group-item properties-sidebar">
+                                <p>Correct Answer Type</p>
+                                <div class="center-toggle">
+				  <input id="toggle-one" type="checkbox" checked="" data-toggle="toggle" data-on="Single Answer" data-off="Multiple Answers" data-onstyle="success" data-offstyle="success" data-size="small" data-width="75%">
+                                </div>
+                            </li>
+                            <li class="list-group-item properties-sidebar">
+                                <p>Answer 1</p>
+                                <input type="text" class="form-control" placeholder="Enter Answer 1 here ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.answers[0]">
+                            </li>
+                            <li class="list-group-item properties-sidebar">
+                                <p>Answer 2</p>
+                                <input type="text" class="form-control" placeholder="Enter Answer 2 here ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.answers[1]">
+                            </li>
+                            <li class="list-group-item properties-sidebar">
+                                <p>Answer 3</p>
+                                <input type="text" class="form-control" placeholder="Enter Answer 3 here ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.answers[2]">
+                            </li>
+                            <li class="list-group-item properties-sidebar">
+                                <p>Answer 4</p>
+                                <input type="text" class="form-control" placeholder="Enter Answer 4 here ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.answers[3]">
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+
+    <div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">{{quiz.text}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="thumbnail">
+                                <img ng-src="{{currentQuestion.pictureUrl}}" class="">
+                                <div class="caption text-center">
+                                    <h3 class="">{{currentQuestion.text}}</h3>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-6">
+                                            <button class="btn btn-default btn-block answer-button">
+                                                <h3>{{currentQuestion.answers[0]}}</h3>
+                                            </button>
+                                        </div>
+                                        <div class="col-xs-12 col-md-6">
+                                            <button class="btn btn-default btn-block answer-button">
+                                                <h3>{{currentQuestion.answers[1]}}</h3>
+                                            </button>
+                                        </div>
+                                        <div class="col-xs-12 col-md-6">
+                                            <button class="btn btn-default btn-block answer-button">
+                                                <h3>{{currentQuestion.answers[2]}}</h3>
+                                            </button>
+                                        </div>
+                                        <div class="col-xs-12 col-md-6">
+                                            <button class="btn btn-default btn-block answer-button">
+                                                <h3>{{currentQuestion.answers[3]}}</h3>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+	
+
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <script src="/assets/js/app.js"></script>
+
+    <!-- Bootstrap Toggle JavaScript -->
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+    <script>
+        $(function () {
+            $('#toggle-one').bootstrapToggle();
+        })
+    </script>
+{% endraw %}
+</body>
+
+</html>

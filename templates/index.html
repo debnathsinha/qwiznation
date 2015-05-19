@@ -1,16 +1,4 @@
-<html>
-<!DOCTYPE html>
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google" value="notranslate">
-    <title>Cards Layout v1</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
-    <script src="/assets/js/angular.js"></script>
-</head>
+{% extends "baseadmin.html" %}
 
 <body ng-app="qw">
       <hr>
@@ -21,6 +9,11 @@
       {% endraw %}
 
     <br>
+
+    <h3><a href="/admin">Admin</a></h3>
+
+    <br>
+    
     <div class="container">
       {% for quiz in quizes %}
         <div class="row">
@@ -73,7 +66,6 @@
 	  <form action="" method="post" accept-charset="utf-8">
 	    <p><input type="text" name="name" placeholder="Name" id="name"></p>
 	    <p><input type="text" name="result" placeholder="Result" id="result"></p>
-	  </form>
 
 	  {% for question in questionsperquiz %}
 	  <p>

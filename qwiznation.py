@@ -28,6 +28,11 @@ class Question(ndb.Model):
 class Answer(ndb.Model):
     text = ndb.StringProperty()
 
+class DashboardAdminPage(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENV.get_template("dashboard.html")
+        self.response.write(template.render())
+
 class QuizListViewPage(webapp2.RequestHandler):
     def get(self):
         template = JINJA_ENV.get_template("quiz.html")
@@ -44,12 +49,12 @@ class QuizDetailPage(webapp2.RequestHandler):
 
 class NewQuizPage(webapp2.RequestHandler):
     def get(self):
-        template = JINJA_ENV.get_template('new.html')
+        template = JINJA_ENV.get_template('newquiz.html')
         self.response.write(template.render())
 
 class AdminPage(webapp2.RequestHandler):
     def get(self):
-        template = JINJA_ENV.get_template("admin.html")
+        template = JINJA_ENV.get_template("quiz.html")
         self.response.write(template.render())
 
 class MainPage(webapp2.RequestHandler):
@@ -108,9 +113,14 @@ class QuizAPIDetailPage(webapp2.RequestHandler):
         pass
 
 class QuizAPIListPage(webapp2.RequestHandler):
-    def get(self, quiz_id):
+    def get(self):
         # Get the previews of all the quizzes
-        print quiz_id
+        names = []
+        quizzes = Quiz.query().fetch()
+        for quiz in quizzes:
+            names.push(quiz.name)
+        self.response.headers['Content-Type'] = 'application/json'
+        self.response.write(json.dumps(names))
 
     def post(self, quiz_id):
         # Create a new quiz
@@ -127,6 +137,7 @@ class AnswerPage(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     (r'/admin', AdminPage),
+    (r'/dashboard', DashboardAdminPage),
     (r'/quiz/new', NewQuizPage),
     (r'/quiz', QuizListViewPage),
     (r'/quiz/(\d+)', QuizDetailPage),

@@ -1,0 +1,163 @@
+{% extends "baseadmin.html" %}
+
+<div id="wrapper" ng-app="qw" ng-cloak ng-controller="QwController">
+{% block sidebarmenu %}
+	{% raw %}
+	<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+	    <ul class="nav navbar-nav side-nav">
+	        <li ng-repeat="question in quiz.questions" ng-class="{'active':isCurrentQuestionActive(question)}">
+	            <a ng-click="setCurrentQuestion(question)"><span class="badge">{{$index+1}}</span>&nbsp; {{question.text}}</a>
+	        </li>
+	        <li>
+	            <a ng-click="createNewQuestion()"><i class="fa fa-2x fa-fw fa-plus" style="vertical-align: middle;"></i>Create New</a>
+	        </li>
+	    </ul>
+	</div>
+	{% endraw %}
+{% endblock %}
+
+{% block content %}
+{% raw %}
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="thumbnail">
+                            <img ng-src="{{currentQuestion.pictureUrl}}" class="">
+                            <div class="caption text-center">
+                                <h3 class="">{{currentQuestion.text}}</h3>
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6" ng-click="answerSelected(0)">
+                                        <button class="btn btn-default btn-block answer-button">
+                                            <h3>{{currentQuestion.answers[0]}}</h3>
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <button class="btn btn-default btn-block answer-button" ng-click="answerSelected(1)">
+                                            <h3>{{currentQuestion.answers[1]}}</h3>
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <button class="btn btn-default btn-block answer-button" ng-click="answerSelected(2)">
+                                            <h3>{{currentQuestion.answers[2]}}</h3>
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <button class="btn btn-default btn-block answer-button" ng-click="answerSelected(3)">
+                                            <h3>{{currentQuestion.answers[3]}}</h3>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                            Launch demo modal
+                        </button>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Properties</div>
+                            <li class="list-group-item properties-sidebar">
+                                <p>Title Picture</p>
+                                <input type="text" class="form-control" placeholder="URL to your title picture ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.pictureUrl">
+                            </li>
+                            <li class="list-group-item properties-sidebar question-section">
+                                <p>Question Text</p>
+                                <input type="text" class="form-control" placeholder="140 character limit!" aria-describedby="sizing-addon3" ng-model="currentQuestion.text">
+                            </li>
+                            <li class="list-group-item properties-sidebar">
+                                <p>Correct Answer Type</p>
+                                <div class="center-toggle">
+				  <input id="toggle-one" type="checkbox" checked="" data-toggle="toggle" data-on="Single Answer" data-off="Multiple Answers" data-onstyle="success" data-offstyle="success" data-size="small" data-width="75%">
+                                </div>
+                            </li>
+                            <li class="list-group-item properties-sidebar">
+                                <p>Answer 1</p>
+                                <input type="text" class="form-control" placeholder="Enter Answer 1 here ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.answers[0]">
+                            </li>
+                            <li class="list-group-item properties-sidebar">
+                                <p>Answer 2</p>
+                                <input type="text" class="form-control" placeholder="Enter Answer 2 here ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.answers[1]">
+                            </li>
+                            <li class="list-group-item properties-sidebar">
+                                <p>Answer 3</p>
+                                <input type="text" class="form-control" placeholder="Enter Answer 3 here ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.answers[2]">
+                            </li>
+                            <li class="list-group-item properties-sidebar">
+                                <p>Answer 4</p>
+                                <input type="text" class="form-control" placeholder="Enter Answer 4 here ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.answers[3]">
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+
+    <div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">{{quiz.text}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="thumbnail">
+                                <img ng-src="{{currentQuestion.pictureUrl}}" class="">
+                                <div class="caption text-center">
+                                    <h3 class="">{{currentQuestion.text}}</h3>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-6">
+                                            <button class="btn btn-default btn-block answer-button">
+                                                <h3>{{currentQuestion.answers[0]}}</h3>
+                                            </button>
+                                        </div>
+                                        <div class="col-xs-12 col-md-6">
+                                            <button class="btn btn-default btn-block answer-button">
+                                                <h3>{{currentQuestion.answers[1]}}</h3>
+                                            </button>
+                                        </div>
+                                        <div class="col-xs-12 col-md-6">
+                                            <button class="btn btn-default btn-block answer-button">
+                                                <h3>{{currentQuestion.answers[2]}}</h3>
+                                            </button>
+                                        </div>
+                                        <div class="col-xs-12 col-md-6">
+                                            <button class="btn btn-default btn-block answer-button">
+                                                <h3>{{currentQuestion.answers[3]}}</h3>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+	
+
+
+    </div>
+    <!-- /#wrapper -->
+
+    <script src="/assets/js/app.js"></script>
+
+{% endraw %}
+%{% endblock %}

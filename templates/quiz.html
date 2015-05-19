@@ -1,1 +1,31 @@
-Hello World
+{% extends "baseadmin.html" %}
+
+
+{% block sidebarmenu %}
+<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+<div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav side-nav">
+        <li>
+            <a href="/admin"><i class="fa fa-fw fa-dashboard"></i> Quiz</a>
+        </li>
+        <li>
+            <a href="/dashboard"><i class="fa fa-fw fa-bar-chart-o"></i> Analytics</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+
+{% raw %}
+<div ng-app="quiz" ng-controller="QuizController">
+  <h3>Quizzes</h3>
+  <li ng-repeat ="quiz in quizzes">
+    {{quiz.name}}
+  </li>
+</div>
+<script src="/assets/js/quiz.js"></script>
+
+{% endraw %}
+
+{% endblock %}

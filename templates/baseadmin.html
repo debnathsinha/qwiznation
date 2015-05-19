@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>Quiz Nation</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -22,6 +22,10 @@
 
     <!-- Custom Fonts -->
     <link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script src="/assets/js/angular.js"></script>
+    <link rel="stylesheet" href="assets/css/quizcards.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -54,17 +58,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith</a>
                 </li>
             </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="/admin"><i class="fa fa-fw fa-dashboard"></i> Quiz</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard"><i class="fa fa-fw fa-bar-chart-o"></i> Analytics</a>
-                    </li>
-                </ul>
-            </div>
+	    {% block sidebarmenu %}
+	    {% endblock %}
             <!-- /.navbar-collapse -->
         </nav>
 
@@ -72,6 +67,8 @@
 
             <div class="container-fluid">
 
+	      {% block content %}
+	      {% endblock %}
 
             </div>
             <!-- /.container-fluid -->
@@ -83,10 +80,10 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="assets/js/jquery.js"></script>
+    <script src="/assets/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
 
     <!-- Morris Charts JavaScript -->
     <script src="assets/js/plugins/morris/raphael.min.js"></script>
