@@ -8,7 +8,9 @@
             "correctAnswer": "1",
             "answers": [
                 "Yes",
-                "No"
+                "No",
+		"Maybe",
+		"Never"
             ]
         },
         {

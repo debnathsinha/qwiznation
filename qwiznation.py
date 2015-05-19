@@ -139,7 +139,7 @@ app = webapp2.WSGIApplication([
     ('/', MainPage),
     (r'/admin', AdminPage),
     (r'/dashboard', DashboardAdminPage),
-    (r'/quiznew', NewQuizPage),
+    (r'/quiz/new', NewQuizPage),
     (r'/quiz', QuizListViewPage),
     (r'/quiz/(\d+)', QuizDetailPage),
     (r'/api/quiz', QuizAPIListPage),
