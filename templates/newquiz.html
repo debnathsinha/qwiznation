@@ -7,19 +7,21 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li class="questionText">
-                    <h4>Start Page</h4>
+                    <a href="#">Start Page</a>
                 </li>
                 <li class="questionText">
-                    <h4>Questions</h4>
-                </li>
-                <li ng-repeat="question in quiz.questions" ng-class="{'active':isCurrentQuestionActive(question)}">
-                    <a href="#" ng-click="setCurrentQuestion(question)"><span class="badge">{{$index+1}}</span>&nbsp; <span class="questionText">{{question.text}}</span></a>
-                </li>
-                <li>
-                    <a ng-click="createNewQuestion()"><i class="fa fa-2x fa-fw fa-plus questionText" style="vertical-align: middle;"></i><span class="questionText">Create New</span></a>
+                    <a href="#">Questions</a>
+                    <ul>
+                        <li ng-repeat="question in quiz.questions" ng-class="{'active':isCurrentQuestionActive(question)}">
+                            <a href="#" ng-click="setCurrentQuestion(question)"><span class="badge">{{$index+1}}</span>&nbsp; <span class="questionText">{{question.text}}</span></a>
+                        </li>
+                        <li>
+                            <a ng-click="createNewQuestion()"><i class="fa fa-2x fa-fw fa-plus questionText" style="vertical-align: middle;"></i><span class="questionText">Create New</span></a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="questionText">
-                    <h4>Share</h4>
+                    <a href="#">Share</a>
                 </li>
             </ul>
         </div>
@@ -32,12 +34,12 @@
                     <div class="col-md-6">
                         <h3>Questions</h3>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2 col-md-offset-4">
                         <button type="button" class="btn btn-success btn-block margin-bottom-20 margin-top-10" ng-click="saveQuiz()">Save Quiz</button>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <div class="thumbnail">
                             <img ng-src="{{currentQuestion.pictureUrl}}" class="">
                             <div class="caption text-center">
@@ -66,11 +68,8 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                            Launch demo modal
-                        </button>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">Properties</div>
                             <li class="list-group-item properties-sidebar">
