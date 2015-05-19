@@ -62,6 +62,14 @@ angular.module('qw', [])
 	$scope.setCurrentQuestion(question);
     }
 
+    $scope.saveQuiz = function() {
+	console.log($scope.quiz);
+	$http.post("/api/quiz/1", $scope.quiz)
+	.success(function(data) {
+	    console.log(data);
+	});
+    }
+
     function answerSelected(index) {
 	console.log("Answer selected" + index); 
     }

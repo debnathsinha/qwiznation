@@ -108,9 +108,10 @@ class QuizAPIDetailPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = "application/json"
         self.response.write(json.dumps(quiz))
 
-    def post(self):
+    def post(self, quiz_id):
         # Edit/update an existing quiz
-        pass
+        quiz = json.loads(self.request.body)
+        print quiz
 
 class QuizAPIListPage(webapp2.RequestHandler):
     def get(self):
@@ -138,7 +139,7 @@ app = webapp2.WSGIApplication([
     ('/', MainPage),
     (r'/admin', AdminPage),
     (r'/dashboard', DashboardAdminPage),
-    (r'/quiz/new', NewQuizPage),
+    (r'/quiznew', NewQuizPage),
     (r'/quiz', QuizListViewPage),
     (r'/quiz/(\d+)', QuizDetailPage),
     (r'/api/quiz', QuizAPIListPage),

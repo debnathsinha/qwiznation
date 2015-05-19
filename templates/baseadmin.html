@@ -63,18 +63,19 @@
             <!-- /.navbar-collapse -->
         </nav>
 
+	      {% block content %}
         <div id="page-wrapper">
 
             <div class="container-fluid">
 
-	      {% block content %}
-	      {% endblock %}
 
             </div>
             <!-- /.container-fluid -->
 
         </div>
         <!-- /#page-wrapper -->
+
+	      {% endblock %}
 
     </div>
     <!-- /#wrapper -->
