@@ -1,0 +1,81 @@
+{% extends "baseadmin.html" %}
+
+<div>
+    {% block content %} {% raw %}
+    <div ng-app="qw" ng-cloak ng-controller="QwController">
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li class="questionText">
+                    <a href="#">Start Page</a>
+                </li>
+                <li class="questionText">
+                    <a href="#">Questions</a>
+                    <ul>
+                        <li ng-repeat="question in quiz.questions" ng-class="{'active':isCurrentQuestionActive(question)}">
+                            <a href="#" ng-click="setCurrentQuestion(question)"><span class="badge">{{$index+1}}</span>&nbsp; <span class="questionText">{{question.text}}</span></a>
+                        </li>
+                        <li>
+                            <a ng-click="createNewQuestion()"><i class="fa fa-2x fa-fw fa-plus questionText" style="vertical-align: middle;"></i><span class="questionText">&nbsp;&nbsp;Add a Question</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="questionText">
+                    <a href="#">Share</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Questions</h3>
+                    </div>
+                    <div class="col-md-2 col-md-offset-2">
+                        <button type="button" class="btn btn-success btn-block margin-bottom-20 margin-top-10" ng-click="saveQuiz()">Save Quiz</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-primary btn-block margin-bottom-20 margin-top-10" ng-click="saveQuiz()">Next <i class="fa fa-arrow-circle-o-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 titleslide">
+                        <div class="thumbnail">
+                            <img ng-src="{{currentQuestion.pictureUrl}}" class="">
+                            <div class="caption text-center">
+                                <h3 class="">{{currentQuestion.text}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Title Slide Properties</div>
+                            <li class="list-group-item properties-sidebar">
+                                <p>Background Picture</p>
+                                <input type="text" class="form-control" placeholder="URL to your title picture ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.pictureUrl">
+                            </li>
+                            <li class="list-group-item properties-sidebar question-section">
+                                <p>Title</p>
+                                <input type="text" class="form-control" placeholder="140 character limit!" aria-describedby="sizing-addon3" ng-model="currentQuestion.text">
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+        {% endraw %}
+    </div>
+    <!-- /#wrapper -->
+
+    <script src="/assets/js/app.js"></script>
+    {% endblock %}
+
+</div>
