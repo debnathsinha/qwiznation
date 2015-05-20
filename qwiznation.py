@@ -64,15 +64,15 @@ class AdminPage(webapp2.RequestHandler):
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        quizes = Quiz.query().fetch()
-        if quizes:
-        	questions = Question.query(ancestor=quizes[0].key).fetch()
+        quizzes = Quiz.query().fetch()
+        if quizzes:
+        	questions = Question.query(ancestor=quizzes[0].key).fetch()
         	print questions
         	for question in questions:
         	    answers = Answer.query(ancestor=question.key).fetch()
         	    print answers
         values = { 
-            'quizes': quizes,
+            'quizzes': quizzes,
             'questionsperquiz': range(QUESTIONS_PER_QUIZ)
         }
         template = JINJA_ENV.get_template("index.html")
