@@ -18,6 +18,7 @@ QUESTIONS_PER_QUIZ = 5
 class Quiz(ndb.Model):
     name = ndb.StringProperty()
     result = ndb.StringProperty()
+    pic_url = ndb.StringProperty()
     created_time = ndb.DateTimeProperty(auto_now_add=True)
 
 class Question(ndb.Model):
