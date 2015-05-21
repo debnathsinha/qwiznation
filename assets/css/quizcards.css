@@ -637,15 +637,26 @@ body {
 ********************************************************/
 
 .quiztile {
+    /*
     background-color: #e5e5e5;
     color: #707070;
+*/
+    
     text-align: center;
-    margin: 10px;
+    border-radius: 15px;
+    /*    margin: 10px;*/
+    
+    font-family: 'Lato', sans-serif;
+}
+
+.img-rounded {
+    border-radius: 15px;
 }
 
 .progress {
     height: 10px;
     margin: 10px;
+    background-color: #fff;
 }
 
 .answer {
@@ -654,6 +665,11 @@ body {
     border-color: #505050;
     color: #505050;
     background-color: #fff;
+    white-space: normal;
+    font-weight: 700;
+    border: 2px solid #505050;
+    border-radius: 15px;
+    padding: 16px 20px;
 }
 
 .row {
@@ -671,4 +687,8 @@ body {
     border-color: #f27575;
     background-color: #fff;
     color: #f27575;
+}
+
+.answer:hover {
+    background-color: #bfbfbf;
 }
