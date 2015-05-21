@@ -18,12 +18,14 @@ QUESTIONS_PER_QUIZ = 5
 class Quiz(ndb.Model):
     name = ndb.StringProperty()
     result = ndb.StringProperty()
+    pic_url = ndb.StringProperty()
     created_time = ndb.DateTimeProperty(auto_now_add=True)
 
 class Question(ndb.Model):
     text = ndb.StringProperty()
     pic_url = ndb.StringProperty()
     correct_answer = ndb.StringProperty()
+    answers = ndb.StringProperty(repeated=True)
 
 class Answer(ndb.Model):
     text = ndb.StringProperty()
@@ -35,14 +37,25 @@ class DashboardAdminPage(webapp2.RequestHandler):
 
 class QuizListViewPage(webapp2.RequestHandler):
     def get(self):
+        quizzes = Quiz.query().fetch()
+        template_values = {
+            'quizzes' : quizzes
+        }
         template = JINJA_ENV.get_template("quiz.html")
-        self.response.write(template.render())
+        self.response.write(template.render(template_values))
+
     def post(self):
         pass
 
 class QuizDetailPage(webapp2.RequestHandler):
     def get(self, quiz_id):
-        print quiz_id
+        template = JINJA_ENV.get_template("quiz.html")
+        self.response.write(template.render())
+
+class QuizEditDetailPage(webapp2.RequestHandler):
+    def get(self, quiz_id):
+        template = JINJA_ENV.get_template("newquiz.html")
+        self.response.write(template.render())
         
     def post(self, quiz_id):
         print self.request.get("content")
@@ -118,8 +131,10 @@ class MainPage(webapp2.RequestHandler):
 class QuizAPIDetailPage(webapp2.RequestHandler):
     def get(self, quiz_id):
         # Get a particular quiz
-        quiz=open('samplequiz.json').read()
-        quiz = json.loads(quiz)
+        print quiz_id
+        quiz_id = int(quiz_id)
+        quiz = Quiz.get_by_id(int(quiz_id))
+        pdb.set_trace()
         self.response.headers['Content-Type'] = "application/json"
         self.response.write(json.dumps(quiz))
 
@@ -127,6 +142,19 @@ class QuizAPIDetailPage(webapp2.RequestHandler):
         # Edit/update an existing quiz
         quiz = json.loads(self.request.body)
         print quiz
+        qz = Quiz(name = quiz['name'], result = quiz['result'])
+        qz.put()
+        questions = quiz['questions']
+        for question in questions:
+            qn = Question(parent=qz.key, text=question['text'],
+                          pic_url=question['pictureUrl'],
+                          correct_answer=str(question['correctAnswer']))
+            answers = question['answers']
+            for answer in answers:
+                qn.answers.append(answer)
+            qn.put()
+        self.response.headers['Content-Type'] = 'text/plain'
+        self.response.write(qn.key.id())
 
 class QuizAPIListPage(webapp2.RequestHandler):
     def get(self):
@@ -134,7 +162,10 @@ class QuizAPIListPage(webapp2.RequestHandler):
         names = []
         quizzes = Quiz.query().fetch()
         for quiz in quizzes:
-            names.push(quiz.name)
+            names.append({
+                'id': quiz.key.id(),
+                'name': quiz.name
+            })
         self.response.headers['Content-Type'] = 'application/json'
         self.response.write(json.dumps(names))
 
@@ -159,9 +190,10 @@ app = webapp2.WSGIApplication([
     (r'/quiztile', QuizTilePage),
     (r'/quiz/embed', EmbedPage),
     (r'/quiz', QuizListViewPage),
-    (r'/quiz/(\d+)', QuizDetailPage),
+    (r'/quiz/([a-zA-Z0-9]+)/edit$', QuizEditDetailPage),
+    (r'/quiz/([a-zA-Z0-9]+)', QuizDetailPage),
     (r'/api/quiz', QuizAPIListPage),
-    (r'/api/quiz/(\d+)', QuizAPIDetailPage),
+    (r'/api/quiz/([a-zA-Z0-9]+)', QuizAPIDetailPage),
     (r'/api/question/', QuestionPage),
     (r'/api/answer/', AnswerPage)
 ], debug=True)
