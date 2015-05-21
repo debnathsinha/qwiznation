@@ -21,11 +21,16 @@
             <div class="container-fluid">
 
 {% raw %}
-<div ng-app="quiz" ng-controller="QuizController">
+<div ng-app="quiz" ng-cloak ng-controller="QuizController">
   <h3>Quizzes</h3>
-  <li ng-repeat ="quiz in quizzes">
-    {{quiz.name}}
-  </li>
+  <ul>
+    <li ng-repeat ="quiz in quizzes">
+      <a href={{quiz.url}}>{{quiz.name}}</a>
+    </li>
+    <li>
+      <a href="/quiz/new">New Quiz</a>
+    </li>
+  </ul>
 </div>
 <script src="/assets/js/quiz.js"></script>
 

@@ -1,5 +1,5 @@
 angular.module('qw', [])
-.controller('QwController', function($scope, $http) {
+.controller('QwController', function($scope, $http, $location, $window) {
     $scope.name = "Game of Thrones";
     // $http.get('quiz')
     // .success(function(data) {
@@ -26,14 +26,27 @@ angular.module('qw', [])
 	    }]
     }
 
-    $http.get("/api/quiz/1")
-    .success(function(response) {
-	console.log(response);
-	$scope.quiz = response;
-	$scope.currentQuestion = $scope.quiz.questions[0];
-    });
+    
 
     $scope.currentQuestion = $scope.quiz.questions[0];
+    var regex = /\/quiz\/([a-zA-Z0-9\/]+)$/;
+    var match = regex.exec($location.absUrl());
+    if (match[1] === "new") {
+	// This is a new quiz
+    } else {
+	// This is an existing quiz, pull the questions
+	regex = /\/quiz\/([a-zA-Z0-9]+)\/edit$/;
+	match = regex.exec($location.absUrl());
+	$http.get("/api/quiz/" + match[1])
+	    .success(function(response) {
+    		console.log(response);
+    		$scope.quiz = response;
+    		$scope.currentQuestion = $scope.quiz.questions[0];
+	    });
+	console.log(match[1]);	
+    }
+
+    console.log($location.url());
 
     function isCurrentQuestionActive(question) {
 	return $scope.currentQuestion == question;
@@ -67,6 +80,7 @@ angular.module('qw', [])
 	$http.post("/api/quiz/1", $scope.quiz)
 	.success(function(data) {
 	    console.log(data);
+	    $window.location.href = "/quiz/"+data;
 	});
     }
 
@@ -77,6 +91,9 @@ angular.module('qw', [])
     $scope.answerSelected = answerSelected;
 
 })
-.controller('QwHeaderController', function($scope) {
-    $scope.yourName = "Debnath";
+.controller("IndexPageController", function($scope, $http) { 
+    $http.get("/api/quiz")
+    .success(function(data) {
+	$scope.quizzes = data;
+    });
 });

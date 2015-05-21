@@ -1,61 +1,11 @@
-{% extends "baseadmin.html" %}
+{% extends "base.html" %}
 
-<body ng-app="qw">
-      <hr>
-      {% raw %}
-      <div ng-controller="QwHeaderController">
-	<h1>Hello  {{yourName}} !</h1>
-      </div>
-      {% endraw %}
-
-    <br>
-
-    <h3><a href="/admin">Admin</a></h3>
-
-    <br>
-    
-    <div class="container">
-      {% for quiz in quizzes %}
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="thumbnail">
-                    <img src="http://www.keenthemes.com/preview/metronic/theme/assets/global/plugins/jcrop/demos/demo_files/image2.jpg" class="">
-                    <div class="caption text-center">
-                        <h3 class="">When is the Business &amp; Entrepreneurs Workshop?</h3>
-
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6">
-                                <h3><span class="label label-info">Jun 12</span></h3>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <h3><span class="label label-info">Jun 13</span></h3>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <h3><span class="label label-info">Jun 14</span></h3>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <h3><span class="label label-info">Jun 15</span></h3>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/row-->
-	{% endfor %}
+{% block content %}
 
 {% raw %}
-	<div ng-controller="QwController">
-	  {{quiz.name}}
-	  <ul ng-repeat="question in quiz.questions">
-	    <li>{{question.text}}</li>
-	    <ul ng-repeat="answer in question.answers">
-	      <li>
-		{{answer}}
-	      </li>
-	    </ul>
+	<div ng-app="qw" ng-controller="IndexPageController">
+	  <ul ng-repeat="quiz in quizzes">
+	    <li>{{quiz.name}}</li>
 	  </ul>
 	</div>
 	      
@@ -63,6 +13,9 @@
 	  
 {% endraw %}
 
+	<script src="/assets/js/app.js"></script>
+
+{% endblock %}
 	  <form action="" method="post" accept-charset="utf-8">
 	    <p><input type="text" name="name" placeholder="Name" id="name"></p>
 	    <p><input type="text" name="result" placeholder="Result" id="result"></p>
@@ -84,7 +37,7 @@
 	</form>
 
 	
-	<script src="/assets/js/app.js"></script>
+	
 </body>
 
 </html>
