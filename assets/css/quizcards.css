@@ -607,7 +607,7 @@ body {
 .questionText {
     color: #9d9d9d;
 }
-
+/*
 .titleslide {
     position: relative;
     width: 100%;
@@ -627,6 +627,7 @@ body {
     width: 50%;
     padding: 10px;
 }
+*/
 
 .titleimage {
     max-width: 100%;
@@ -691,4 +692,26 @@ body {
 
 .answer:hover {
     background-color: #bfbfbf;
+}
+
+.startbutton {
+    background-color: #fff;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 28px;
+    border: 3px solid #1acc28;
+    color: #1acc28;
+}
+
+.startbutton:hover {}
+
+.titleslide {
+    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://blogs.villagevoice.com/runninscared/got21.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: #505050;
+    height: 100%;
+    width: 100%;
+    /*    position: absolute;*/
 }
