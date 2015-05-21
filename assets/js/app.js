@@ -1,5 +1,5 @@
 angular.module('qw', [])
-.controller('QwController', function($scope, $http, $location, $window) {
+.controller('EditQuizController', function($scope, $http, $location, $window) {
     $scope.name = "Game of Thrones";
     // $http.get('quiz')
     // .success(function(data) {

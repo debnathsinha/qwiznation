@@ -1,0 +1,7 @@
+angular.module('qw', [])
+.service('QuizService', function() {
+
+    this.sayHello = function() {
+	alert("hello");
+    };
+});

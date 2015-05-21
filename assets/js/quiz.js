@@ -8,4 +8,5 @@ angular.module('quiz', [])
 	    $scope.quizzes[quiz].url = "/quiz/" + $scope.quizzes[quiz].id + "/edit";
 	}
     });
+    QuizService.sayHello();
 });
