@@ -607,7 +607,111 @@ body {
 .questionText {
     color: #9d9d9d;
 }
+/*
+.titleslide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url('http://upload.wikimedia.org/wikipedia/commons/7/7f/Metropolitan_Building_-_Esplanade_-_Kolkata_2012-09-19_0013.jpg') no-repeat center;
+    background-size: contain;
+}
+
+.darken {
+    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(shoes.jpg);
+}
+
+.titleslide p {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 50%;
+    padding: 10px;
+}
+*/
+
+.titleimage {
+    max-width: 100%;
+    max-height: 100%;
+}
+/******************************************************
+  SEPARATE TEST SECTION - QUIZ TILE SCAFFOLD
+********************************************************/
+
+.quiztile {
+    /*
+    background-color: #e5e5e5;
+    color: #707070;
+*/
+    
+    text-align: center;
+    border-radius: 15px;
+    /*    margin: 10px;*/
+    
+    font-family: 'Lato', sans-serif;
+}
+
+.img-rounded {
+    border-radius: 15px;
+}
+
+.progress {
+    height: 10px;
+    margin: 10px;
+    background-color: #fff;
+}
+
+.answer {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-color: #505050;
+    color: #505050;
+    background-color: #fff;
+    white-space: normal;
+    font-weight: 700;
+    border: 2px solid #505050;
+    border-radius: 15px;
+    padding: 16px 20px;
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.correctanswer {
+    border-color: #1caa28;
+    background-color: #fff;
+    color: #1caa28;
+}
+
+.wronganswer {
+    border-color: #f27575;
+    background-color: #fff;
+    color: #f27575;
+}
+
+.answer:hover {
+    background-color: #bfbfbf;
+}
+
+.startbutton {
+    background-color: #fff;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 28px;
+    border: 3px solid #1acc28;
+    color: #1acc28;
+}
+
+.startbutton:hover {}
 
 .titleslide {
-    background-image: url('http://www.keenthemes.com/preview/metronic/theme/assets/global/plugins/jcrop/demos/demo_files/image2.jpg') norepeat center;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://blogs.villagevoice.com/runninscared/got21.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: #505050;
+    height: 100%;
+    width: 100%;
+    /*    position: absolute;*/
 }
