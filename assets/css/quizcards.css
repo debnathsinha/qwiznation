@@ -651,7 +651,9 @@ body {
 .answer {
     margin-top: 10px;
     margin-bottom: 10px;
-    border-color: #1cca28;
+    border-color: #505050;
+    color: #505050;
+    background-color: #fff;
 }
 
 .row {
@@ -659,6 +661,14 @@ body {
     margin-right: 0px;
 }
 
-.correctanswer {}
+.correctanswer {
+    border-color: #1caa28;
+    background-color: #fff;
+    color: #1caa28;
+}
 
-.wronganswer {}
+.wronganswer {
+    border-color: #f27575;
+    background-color: #fff;
+    color: #f27575;
+}
