@@ -52,10 +52,20 @@ class NewQuizPage(webapp2.RequestHandler):
         template = JINJA_ENV.get_template('newquiz.html')
         self.response.write(template.render())
 
+class EmbedPage(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENV.get_template('embed.html')
+        self.response.write(template.render())
+        
 class NewQuizTitlePage(webapp2.RequestHandler):
     def get(self):
         template = JINJA_ENV.get_template('newquiz-titlepage.html')
         self.response.write(template.render())
+        
+class QuizTilePage(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENV.get_template('quiz-tile.html')
+        self.response.write(template.render())        
         
 class AdminPage(webapp2.RequestHandler):
     def get(self):
@@ -145,7 +155,9 @@ app = webapp2.WSGIApplication([
     (r'/admin', AdminPage),
     (r'/dashboard', DashboardAdminPage),
     (r'/quiz/new', NewQuizPage),
-    (r'/quiz/title', NewQuizTitlePage),    
+    (r'/quiz/title', NewQuizTitlePage),  
+    (r'/quiztile', QuizTilePage),
+    (r'/quiz/embed', EmbedPage),
     (r'/quiz', QuizListViewPage),
     (r'/quiz/(\d+)', QuizDetailPage),
     (r'/api/quiz', QuizAPIListPage),
