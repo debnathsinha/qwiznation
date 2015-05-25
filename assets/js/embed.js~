@@ -1,0 +1,5 @@
+angular.module('qw', [])
+.controller('EmbedQuizController', function( $scope ) {
+    
+
+});
