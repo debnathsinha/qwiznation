@@ -49,7 +49,8 @@ class QuizListViewPage(webapp2.RequestHandler):
 
 class QuizDetailPage(webapp2.RequestHandler):
     def get(self, quiz_id):
-        template = JINJA_ENV.get_template("quiz.html")
+        print "Quiz: " + str(quiz_id)
+        template = JINJA_ENV.get_template("quiz-tile.html")
         self.response.write(template.render())
 
 class QuizEditDetailPage(webapp2.RequestHandler):
@@ -134,7 +135,6 @@ class QuizAPIDetailPage(webapp2.RequestHandler):
         print quiz_id
         quiz_id = int(quiz_id)
         quiz = Quiz.get_by_id(int(quiz_id))
-        pdb.set_trace()
         self.response.headers['Content-Type'] = "application/json"
         self.response.write(json.dumps(quiz))
 
