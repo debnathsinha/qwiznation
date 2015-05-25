@@ -1,10 +1,10 @@
 {% raw %}
           <div class="col-md-8">
-	    <div class="quiztile titleslide panel panel-default">
+	    <div ng-style="{'background-image':'url('+quiz.title_pic+')'}" class="quiztile titleslide panel panel-default">
 	      <div class="panel-body">
 		<div class="row">
 		  <div class="col-xs-12" style="color:white;">
-                    <h1><strong>Game of Thrones Quiz</strong></h1>
+                    <h1><strong>{{quiz.name}}</strong></h1>
 		  </div>
 		  <br><br><br>
 		  <div class="col-xs-8 col-xs-offset-2" style="color: #909090;">
@@ -30,11 +30,11 @@
               <div class="panel-heading">Title Slide Properties</div>
               <li class="list-group-item properties-sidebar">
                 <p>Background Picture</p>
-                <input type="text" class="form-control" placeholder="URL to your title picture ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.pictureUrl">
+                <input type="text" class="form-control" placeholder="URL to your title picture ..." aria-describedby="sizing-addon3" ng-model="quiz.title_pic">
               </li>
               <li class="list-group-item properties-sidebar question-section">
                 <p>Title</p>
-                <input type="text" class="form-control" placeholder="140 character limit!" aria-describedby="sizing-addon3" ng-model="currentQuestion.text">
+                <input type="text" class="form-control" placeholder="140 character limit!" aria-describedby="sizing-addon3" ng-model="quiz.name">
               </li>
             </div>
           </div>

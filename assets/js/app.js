@@ -12,6 +12,7 @@ angular.module('qw', [])
     $scope.quiz = {
 	name: 'Enter the name of the quiz',
 	result: 'Enter the question result',
+	title_pic: 'http://www.keenthemes.com/preview/metronic/theme/assets/global/plugins/jcrop/demos/demo_files/image2.jpg',
 	questions: [
 	    {
 		text: 'Enter the question',
@@ -114,6 +115,16 @@ angular.module('qw', [])
     }
 
     $scope.selectQuizTitleSection();
+
+    $scope.selectAnswerType = function(answerType) {
+	if (answerType === 0 || answerType === 2) {
+	    $scope.currentAnswerType = "radio";
+	} else if (answerType === 1) {
+	    $scope.currentAnswerType = "checkbox";
+	}
+    }
+    $scope.selectAnswerType(0);
+	    
 
 })
 .controller("IndexPageController", function($scope, $http) { 
