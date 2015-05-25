@@ -58,12 +58,11 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith</a>
                 </li>
             </ul>
-	    {% block sidebarmenu %}
-	    {% endblock %}
+            {% block sidebarmenu %} {% endblock %}
             <!-- /.navbar-collapse -->
         </nav>
 
-	      {% block content %}
+        {% block content %}
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -75,7 +74,7 @@
         </div>
         <!-- /#page-wrapper -->
 
-	      {% endblock %}
+        {% endblock %}
 
     </div>
     <!-- /#wrapper -->
@@ -88,8 +87,7 @@
 
     <!-- Morris Charts JavaScript -->
     <script src="/assets/js/plugins/morris/raphael.min.js"></script>
-    <script src="/assets/js/plugins/morris/morris.min.js"></script>
-    <script src="/assets/js/plugins/morris/morris-data.js"></script>
+    {% block scripts %} {% endblock %}
 
 </body>
 
