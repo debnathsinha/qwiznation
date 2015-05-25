@@ -1,43 +1,278 @@
-{% extends "base.html" %}
+<!doctype html>
+<html class="no-js" lang="">
 
-{% block content %}
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title> Lambda | Multi Purpose HTML Template</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,900%7CGentium+Basic:400italic&amp;subset=latin,latin" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/css/demo.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/theme.min.css">
+    <link rel="stylesheet" href="assets/css/corporate.min.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/images/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/images/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/images/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/images/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/images/favicons/apple-touch-icon-144x144.png">
+    <link rel="icon" type="image/png" href="assets/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/images/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="assets/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="shortcut icon" href="assets/images/favicons/favicon.ico"> </head>
 
-{% raw %}
-	<div ng-app="qw" ng-controller="IndexPageController">
-	  <ul ng-repeat="quiz in quizzes">
-	    <li>{{quiz.name}}</li>
-	  </ul>
-	</div>
-	      
-	    
-	  
-{% endraw %}
-
-	<script src="/assets/js/app.js"></script>
-
-{% endblock %}
-	  <form action="" method="post" accept-charset="utf-8">
-	    <p><input type="text" name="name" placeholder="Name" id="name"></p>
-	    <p><input type="text" name="result" placeholder="Result" id="result"></p>
-
-	  {% for question in questionsperquiz %}
-	  <p>
-	    <input type="text" name="question{{loop.index}}text" placeholder="Question {{loop.index}}" id="question{{loop.index}}text">
-	    <input type="text" name="question{{loop.index}}picurl" placeholder="Picture URL" id="question{{loop.index}}picurl">
-	    <input type="text" name="question{{loop.index}}correctanswer" placeholder="Correct Answer" id="question{{loop.index}}correctanswer">
-	    <p>
-	    	<input type="text" name="answer{{loop.index}}1text" placeholder="Answer {{loop.index}}" id="answer{{loop.index}}1text">
-	    	<input type="text" name="answer{{loop.index}}2text" placeholder="Answer {{loop.index}}" id="answer{{loop.index}}2text">
-	    	<input type="text" name="answer{{loop.index}}3text" placeholder="Answer {{loop.index}}" id="answer{{loop.index}}3text">
-	    	<input type="text" name="answer{{loop.index}}4text" placeholder="Answer {{loop.index}}" id="answer{{loop.index}}4text">
-	    </p>
-	  </p>
-	  {% endfor %}
-	  <p><input type="submit" value="Submit"></p>
-	</form>
-
-	
-	
+<body class="pace-on pace-minimal">
+    <div class="pace-overlay"></div>
+    <div id="content" role="main">
+        <article>
+            <section class="section lambda-hero">
+                <div class="background-media" style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://c2.staticflickr.com/6/5154/14185447737_ef38603941_k.jpg'); background-repeat:no-repeat; background-size:cover; background-attachment:scroll; background-position: 50% 50%;"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="figure element-top-60 element-bottom-20 lambda-hero-logo os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s"> <span class="figure-image">
+                            <img alt="QuizNation Logo" src="assets/img/logo-text-300px-white.png">
+                        </span> </div>
+                        </div>
+                        <div class="col-md-4 text-center element-top-10 element-bottom-10">
+                            <h2 class=" lambda-hero-h2 element-top-0 element-bottom-0 text-light os-animation normal" data-os-animation="fadeIn" data-os-animation-delay="0.4s">Quizify</h2>
+                        </div>
+                        <div class="col-md-4 text-center element-top-10 element-bottom-10">
+                            <h2 class=" lambda-hero-h2 element-top-0 element-bottom-0 text-light os-animation normal" data-os-animation="fadeIn" data-os-animation-delay="0.5s">Share</h2>
+                        </div>
+                        <div class="col-md-4 text-center element-top-10 element-bottom-10">
+                            <h2 class=" lambda-hero-h2 element-top-0 element-bottom-0 text-light os-animation normal" data-os-animation="fadeIn" data-os-animation-delay="0.6s"><strong>Engage</strong></h2>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <a href="#" class="btn btn-primary btn-lg text-normal element-top-60 element-bottom-80 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.8s" target="_self">Create a Quiz!</a>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <a href="#demos" class="scroll-to scroll-to-id  element-top-40 element-bottom-60 text-light os-animationUp" data-os-animation="fadeInUp" data-os-animation-delay="0.9s"> <i class="fa fa-angle-down"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="text-center element-top-70 os-animation big" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                        Take a Quiz
+                    </h1>
+                            <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
+                                <div class="divider-border-inner" style="width:60px;"> </div>
+                            </div>
+                            <p class="lead text-center center element-bottom-40" data-os-animation="none" data-os-animation-delay="0s"> We put all our 25 years of design experience into every project.
+                                <br> Take a look at some of our latest work.</p>
+                            <div class="portfolio-container element-bottom-60">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="portfolio-header clearfix">
+                                            <div class="portfolio-filters pull-right"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="portfolio masonry no-transition magnific-all" data-col-lg="4" data-col-md="4" data-col-sm="4" data-col-xs="2" data-layout="fitRows" data-padding="15">
+                                    <div class="masonry-item portfolio-item filter-drinks filter-people" data-title="Corporate animation">
+                                        <div class="figure portfolio-os-animation image-filter-blur image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="bounceInDown" data-os-animation-delay="0s">
+                                            <a class="figure-image magnific-vimeo" href="http://vimeo.com/104566183" target="_self"> <img alt="Corporate animation" class="normalwidth" src="assets/images/corporate/p03.jpg">
+                                                <div class="figure-overlay">
+                                                    <div class="figure-overlay-container">
+                                                        <div class="figure-caption">
+                                                            <h3 class="figure-caption-title bordered bordered-small">
+                                                    Corporate animation</h3>
+                                                            <p class="figure-caption-description"> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="masonry-item portfolio-item filter-people" data-title="Freshquote co">
+                                        <div class="figure portfolio-os-animation image-filter-blur image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="bounceInDown" data-os-animation-delay="0.1s">
+                                            <a class="figure-image magnific" href="assets/images/corporate/p01.jpg" target="_self"> <img alt="Freshquote co" class="normalwidth" src="assets/images/corporate/p01.jpg">
+                                                <div class="figure-overlay">
+                                                    <div class="figure-overlay-container">
+                                                        <div class="figure-caption">
+                                                            <h3 class="figure-caption-title bordered bordered-small">
+                                                    Freshquote co</h3>
+                                                            <p class="figure-caption-description"> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="masonry-item portfolio-item filter-people" data-title="Rapid Longitude branding">
+                                        <div class="figure portfolio-os-animation image-filter-blur image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="bounceInDown" data-os-animation-delay="0.2s">
+                                            <a class="figure-image magnific-gallery" data-links="assets/images/corporate/p11.jpg,images/corporate/p07.jpg,images/corporate/p12.jpg" href="assets/images/corporate/p02.jpg" target="_self"> <img alt="Rapid Longitude branding" class="normalwidth" src="assets/images/corporate/p02.jpg">
+                                                <div class="figure-overlay">
+                                                    <div class="figure-overlay-container">
+                                                        <div class="figure-caption">
+                                                            <h3 class="figure-caption-title bordered bordered-small">
+                                                    Rapid Longitude branding</h3>
+                                                            <p class="figure-caption-description"> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="masonry-item portfolio-item filter-people" data-title="Risky Heart magazine">
+                                        <div class="figure portfolio-os-animation image-filter-blur image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="bounceInDown" data-os-animation-delay="0.3s">
+                                            <a class="figure-image magnific" href="assets/images/corporate/p04.jpg" target="_self"> <img alt="Risky Heart magazine" class="normalwidth" src="assets/images/corporate/p04.jpg">
+                                                <div class="figure-overlay">
+                                                    <div class="figure-overlay-container">
+                                                        <div class="figure-caption">
+                                                            <h3 class="figure-caption-title bordered bordered-small">
+                                                    Risky Heart magazine</h3>
+                                                            <p class="figure-caption-description"> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="masonry-item portfolio-item filter-people" data-title="Stationary Concept">
+                                        <div class="figure portfolio-os-animation image-filter-blur image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="bounceInDown" data-os-animation-delay="0.4s">
+                                            <a class="figure-image magnific" href="assets/images/corporate/p05.jpg" target="_self"> <img alt="Stationary Concept" class="normalwidth" src="assets/images/corporate/p05.jpg">
+                                                <div class="figure-overlay">
+                                                    <div class="figure-overlay-container">
+                                                        <div class="figure-caption">
+                                                            <h3 class="figure-caption-title bordered bordered-small">
+                                                    Stationary Concept</h3>
+                                                            <p class="figure-caption-description"> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="masonry-item portfolio-item filter-drinks" data-title="Lambda Magazine">
+                                        <div class="figure portfolio-os-animation image-filter-blur image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="bounceInDown" data-os-animation-delay="0.5s">
+                                            <a class="figure-image magnific" href="assets/images/corporate/p06.jpg" target="_self"> <img alt="Lambda Magazine" class="normalwidth" src="assets/images/corporate/p06.jpg">
+                                                <div class="figure-overlay">
+                                                    <div class="figure-overlay-container">
+                                                        <div class="figure-caption">
+                                                            <h3 class="figure-caption-title bordered bordered-small">
+                                                    Lambda Magazine</h3>
+                                                            <p class="figure-caption-description"> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="masonry-item portfolio-item filter-drinks" data-title="Visual identity">
+                                        <div class="figure portfolio-os-animation image-filter-blur image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="bounceInDown" data-os-animation-delay="0.6s">
+                                            <a class="figure-image magnific" href="assets/images/corporate/p11.jpg" target="_self"> <img alt="Visual identity" class="normalwidth" src="assets/images/corporate/p11.jpg">
+                                                <div class="figure-overlay">
+                                                    <div class="figure-overlay-container">
+                                                        <div class="figure-caption">
+                                                            <h3 class="figure-caption-title bordered bordered-small">
+                                                        Visual identity
+                                                    </h3>
+                                                            <p class="figure-caption-description"> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="masonry-item portfolio-item filter-nature filter-people" data-title="Yellow Yard co">
+                                        <div class="figure portfolio-os-animation image-filter-blur image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="bounceInDown" data-os-animation-delay="0.7s">
+                                            <a class="figure-image magnific" href="assets/images/corporate/p13.jpg" target="_self"> <img alt="Yellow Yard co" class="normalwidth" src="assets/images/corporate/p13.jpg">
+                                                <div class="figure-overlay">
+                                                    <div class="figure-overlay-container">
+                                                        <div class="figure-caption">
+                                                            <h3 class="figure-caption-title bordered bordered-small">
+                                                    Yellow Yard co</h3>
+                                                            <p class="figure-caption-description"> </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="background-overlay" style="background-color: rgba(1,192,225,1);"></div>
+                <div class="container container-vertical-middle">
+                    <div class="row vertical-middle">
+                        <div class="col-md-10">
+                            <h2 class="text-center element-top-60 element-bottom-60 text-light os-animation big light" data-os-animation="fadeInLeft" data-os-animation-delay="0s">
+                        Interested in our full business solutions?
+                    </h2> </div>
+                        <div class="col-md-2 text-center"> <a class="btn btn-primary btn-lg text-light btn-icon-right element-top-60 element-bottom-60" data-os-animation="none" data-os-animation-delay="0s" href="corporate-contact.html" target="_self">
+                        lets have a chat
+                        <i class="fa fa-comment-o" data-animation="tada"></i>
+                    </a> </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="text-center element-top-70 os-animation big" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                        Our services
+                    </h1>
+                            <div class="divider-border divider-border-center element-top-10 element-bottom-10 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s" style="height:3px;">
+                                <div class="divider-border-inner" style="width:60px;"> </div>
+                            </div>
+                            <p class="lead text-center center element-bottom-40 os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.2s"> We help businesses to create and implement exceptional experiences for their customers.
+                                <br> We specialise in online <strong>multi-channel</strong> technology services. </p>
+                            <div class="list-container row element-bottom-50 os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.1s">
+                                <div class="col-md-4 element-bottom-20 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.1s"> <span class="service-simple-image">
+                                <img alt="Visualise" src="assets/images/corporate/idea.png">
+                            </span>
+                                    <h2>Visualise</h2>
+                                    <p>Lambda is ultra flexible and lets you create stunning pages easily for any kind of site out of the box. Get started now.</p>
+                                </div>
+                                <div class="col-md-4 element-bottom-20 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.2s"> <span class="service-simple-image">
+                                <img alt="Research" src="assets/images/corporate/research.png">
+                            </span>
+                                    <h2>Research</h2>
+                                    <p>Lambda is ultra flexible and lets you create stunning pages easily for any kind of site out of the box. Get started now.</p>
+                                </div>
+                                <div class="col-md-4 element-bottom-20 text-center os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.3s"> <span class="service-simple-image">
+                                <img alt="Develop" src="assets/images/corporate/development.png">
+                            </span>
+                                    <h2>Develop</h2>
+                                    <p>Basic search engine optimisation is fundamental. Lambda makes sure that your website will be always be accessible.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
+    <a class="go-top go-top-circle" href="javascript:void(0)"> <i class="fa fa-angle-up"></i> </a>
+    <script type="text/javascript">
+        var oxyThemeData = {
+            navbarHeight: 100,
+            navbarScrolled: 90,
+            navbarScrolledPoint: 20,
+            menuClose: 'off',
+            scrollFinishedMessage: 'No more items to load.',
+            hoverMenu: {
+                hoverActive: false,
+                hoverDelay: 1,
+                hoverFadeDelay: 200
+            },
+            siteLoader: 'on'
+        };
+    </script>
+    <script src="assets/js/theme.min.js"></script>
 </body>
 
 </html>
