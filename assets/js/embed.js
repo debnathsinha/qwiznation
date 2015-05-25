@@ -9,7 +9,7 @@ angular.module('quiz', [])
     var regex = /\/quiz\/([a-zA-Z0-9\/]+)$/;
     var match = regex.exec($location.absUrl());
     
-    $http.get("/api/quiz/" + match[1])
+    $http.get("/api/quiz/" + "6192449487634432")
 		.success(function(response) {
     		    console.log(response);
     		    $scope.quiz = response;

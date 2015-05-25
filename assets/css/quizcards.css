@@ -715,3 +715,32 @@ body {
     width: 100%;
     /*    position: absolute;*/
 }
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    
+    height: 40px;
+    background-color: #fff;
+}
+
+.panel-footer {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.footer-logo-text {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+body {
+    margin-bottom: 40px;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}

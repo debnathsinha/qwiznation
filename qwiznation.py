@@ -135,7 +135,6 @@ class QuizAPIDetailPage(webapp2.RequestHandler):
         print quiz_id
         quiz_id = int(quiz_id)
         quiz = Quiz.get_by_id(int(quiz_id))
-        pdb.set_trace()
         self.response.headers['Content-Type'] = "application/json"
         self.response.write(json.dumps(quiz))
 

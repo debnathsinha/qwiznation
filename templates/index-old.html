@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% raw %}
+	<div ng-app="qw" ng-controller="IndexPageController">
+	  <ul ng-repeat="quiz in quizzes">
+	    <li>{{quiz.name}}</li>
+	  </ul>
+	</div>
+	      
+	    
+	  
+{% endraw %}
+
+	<script src="/assets/js/app.js"></script>
+
+{% endblock %}
+	  <form action="" method="post" accept-charset="utf-8">
+	    <p><input type="text" name="name" placeholder="Name" id="name"></p>
+	    <p><input type="text" name="result" placeholder="Result" id="result"></p>
+
+	  {% for question in questionsperquiz %}
+	  <p>
+	    <input type="text" name="question{{loop.index}}text" placeholder="Question {{loop.index}}" id="question{{loop.index}}text">
+	    <input type="text" name="question{{loop.index}}picurl" placeholder="Picture URL" id="question{{loop.index}}picurl">
+	    <input type="text" name="question{{loop.index}}correctanswer" placeholder="Correct Answer" id="question{{loop.index}}correctanswer">
+	    <p>
+	    	<input type="text" name="answer{{loop.index}}1text" placeholder="Answer {{loop.index}}" id="answer{{loop.index}}1text">
+	    	<input type="text" name="answer{{loop.index}}2text" placeholder="Answer {{loop.index}}" id="answer{{loop.index}}2text">
+	    	<input type="text" name="answer{{loop.index}}3text" placeholder="Answer {{loop.index}}" id="answer{{loop.index}}3text">
+	    	<input type="text" name="answer{{loop.index}}4text" placeholder="Answer {{loop.index}}" id="answer{{loop.index}}4text">
+	    </p>
+	  </p>
+	  {% endfor %}
+	  <p><input type="submit" value="Submit"></p>
+	</form>
+
+	
+	
+</body>
+
+</html>
