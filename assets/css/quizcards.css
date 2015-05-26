@@ -750,3 +750,7 @@ html {
     height: 40%;
     width: auto;
 }
+
+.menu {
+    background-color: rgba(255, 255, 255, 0.1);
+}
