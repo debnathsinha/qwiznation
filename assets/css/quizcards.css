@@ -738,9 +738,15 @@ body {
 
 body {
     margin-bottom: 40px;
+    padding-top: 100px;
 }
 
 html {
     position: relative;
     min-height: 100%;
+}
+
+.logo-img {
+    height: 40%;
+    width: auto;
 }
