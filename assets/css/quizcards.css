@@ -706,7 +706,7 @@ body {
 .startbutton:hover {}
 
 .titleslide {
-    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://blogs.villagevoice.com/runninscared/got21.jpg');
+    /*background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://blogs.villagevoice.com/runninscared/got21.jpg');*/
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
