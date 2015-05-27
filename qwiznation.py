@@ -4,7 +4,9 @@ import os
 import jinja2
 import json
 from google.appengine.ext import ndb
+from google.appengine.api import images
 from pprint import pprint
+import urllib2
 
 ROOT_PATH = os.path.dirname(__file__)
 GMAILYTICS_TEMPLATE_PATH = os.path.join(ROOT_PATH,"templates") 
@@ -44,32 +46,31 @@ class QuizListViewPage(webapp2.RequestHandler):
         template = JINJA_ENV.get_template("quiz.html")
         self.response.write(template.render(template_values))
 
-    def post(self):
-        pass
-
 class QuizDetailPage(webapp2.RequestHandler):
     def get(self, quiz_id):
-        print "Quiz: " + str(quiz_id)
+        template_values = {
+            'quiz_id': quiz_id
+        }
         template = JINJA_ENV.get_template("quiz-tile.html")
-        self.response.write(template.render())
+        self.response.write(template.render(template_values))
 
 class QuizEditDetailPage(webapp2.RequestHandler):
     def get(self, quiz_id):
         template = JINJA_ENV.get_template("newquiz.html")
         self.response.write(template.render())
         
-    def post(self, quiz_id):
-        print self.request.get("content")
-
 class NewQuizPage(webapp2.RequestHandler):
     def get(self):
         template = JINJA_ENV.get_template('newquiz.html')
         self.response.write(template.render())
 
 class EmbedPage(webapp2.RequestHandler):
-    def get(self):
+    def get(self, quiz_id):
+        template_values = {
+            'quiz_id': quiz_id
+        }
         template = JINJA_ENV.get_template('embed.html')
-        self.response.write(template.render())
+        self.response.write(template.render(template_values))
         
 class NewQuizTitlePage(webapp2.RequestHandler):
     def get(self):
@@ -102,45 +103,33 @@ class MainPage(webapp2.RequestHandler):
         template = JINJA_ENV.get_template("index.html")
         self.response.write(template.render(values))
 
-    def post(self):
-        name = self.request.get('name')
-        result = self.request.get('result')
-        quiz = Quiz(name=name, result=result)
-        quiz.put()
-
-        for i in range(1,QUESTIONS_PER_QUIZ+1):
-            question_text = self.request.get('question'+str(i)+'text')
-            print question_text
-            pic_url = self.request.get('question'+str(i)+'picurl')
-            print pic_url
-            correct_answer = self.request.get('question'+str(i)+'correctanswer')
-            print correct_answer
-            if not question_text or not pic_url or not correct_answer:
-                break
-            question = Question(parent=quiz.key,text=question_text,
-                                pic_url=pic_url, correct_answer=correct_answer)
-            question.put()
-            for j in range(1,5):
-                answer_text = self.request.get('answer'+str(i)+str(j)+'text')
-                answer = Answer(parent=question.key, text=answer_text)
-                if not answer_text:
-                    break
-                answer.put()
-                print answer
-        self.redirect('/')
-
 class QuizAPIDetailPage(webapp2.RequestHandler):
     def get(self, quiz_id):
         # Get a particular quiz
         print quiz_id
         quiz_id = int(quiz_id)
         quiz = Quiz.get_by_id(int(quiz_id))
+        quiz_response = {}
+        quiz_response['name'] = quiz.name
+        quiz_response['result'] = quiz.result
+        quiz_response['pic_url'] = quiz.pic_url
+        questions = Question.query(ancestor=quiz.key).fetch()
+        if questions:
+            quiz_response['questions'] = []
+        for question in questions:
+            qn_resp = {}
+            qn_resp['text'] = question.text
+            qn_resp['pic_url'] = question.pic_url
+            qn_resp['correct_answer'] = question.correct_answer
+            qn_resp['answers'] = question.answers
+            quiz_response['questions'].append(qn_resp)
         self.response.headers['Content-Type'] = "application/json"
-        self.response.write(json.dumps(quiz))
+        self.response.write(json.dumps(quiz_response))
 
     def post(self, quiz_id):
         # Edit/update an existing quiz
         quiz = json.loads(self.request.body)
+        pdb.set_trace()
         print quiz
         qz = Quiz(name = quiz['name'], result = quiz['result'])
         qz.put()
@@ -154,7 +143,7 @@ class QuizAPIDetailPage(webapp2.RequestHandler):
                 qn.answers.append(answer)
             qn.put()
         self.response.headers['Content-Type'] = 'text/plain'
-        self.response.write(qn.key.id())
+        self.response.write(qz.key.id())
 
 class QuizAPIListPage(webapp2.RequestHandler):
     def get(self):
@@ -169,17 +158,21 @@ class QuizAPIListPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'application/json'
         self.response.write(json.dumps(names))
 
-    def post(self, quiz_id):
-        # Create a new quiz
-        pass        
-
-class QuestionPage(webapp2.RequestHandler):
+class ImageHandler(webapp2.RequestHandler):
     def get(self):
-        pass
-
-class AnswerPage(webapp2.RequestHandler):
-    def get(self):
-        pass
+        img_url = self.request.get("url")
+        try:
+            result = urllib2.urlopen(img_url)
+            image = result.read()
+            width = self.request.get("width") or 320
+            height = self.request.get("height") or 320
+            image = images.resize(image, width, height)
+            self.response.headers['Content-Type'] = 'image/png'
+            self.response.out.write(image)
+            #pdb.set_trace()
+            #print "Result: " + str(result.read())
+        except urllib2.URLError, e:
+            print e
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
@@ -188,12 +181,11 @@ app = webapp2.WSGIApplication([
     (r'/quiz/new', NewQuizPage),
     (r'/quiz/title', NewQuizTitlePage),  
     (r'/quiztile', QuizTilePage),
-    (r'/quiz/embed', EmbedPage),
+    (r'/quiz/embed/([a-zA-Z0-9]+)', EmbedPage),
     (r'/quiz', QuizListViewPage),
     (r'/quiz/([a-zA-Z0-9]+)/edit$', QuizEditDetailPage),
     (r'/quiz/([a-zA-Z0-9]+)', QuizDetailPage),
     (r'/api/quiz', QuizAPIListPage),
     (r'/api/quiz/([a-zA-Z0-9]+)', QuizAPIDetailPage),
-    (r'/api/question/', QuestionPage),
-    (r'/api/answer/', AnswerPage)
+    (r'/img', ImageHandler)
 ], debug=True)
