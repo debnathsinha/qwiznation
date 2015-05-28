@@ -164,8 +164,8 @@ class ImageHandler(webapp2.RequestHandler):
         try:
             result = urllib2.urlopen(img_url)
             image = result.read()
-            width = self.request.get("width") or 320
-            height = self.request.get("height") or 320
+            width = int(self.request.get("width")) or 320
+            height = int(self.request.get("height")) or 320
             image = images.resize(image, width, height)
             self.response.headers['Content-Type'] = 'image/png'
             self.response.out.write(image)
