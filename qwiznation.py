@@ -129,7 +129,6 @@ class QuizAPIDetailPage(webapp2.RequestHandler):
     def post(self, quiz_id):
         # Edit/update an existing quiz
         quiz = json.loads(self.request.body)
-        pdb.set_trace()
         print quiz
         qz = Quiz(name = quiz['name'], result = quiz['result'])
         qz.put()
