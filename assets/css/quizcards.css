@@ -521,54 +521,138 @@ div #quizcard {
 ********************************************************/
 
 @media (max-width: 480px) {
-    /*
-    .navbar li a{
-    font-size:14px;
+    h1.tile-question-text {
+        font-size: 18px;
+        margin-top: 0px;
     }
-*/
-    
-    .smallpicture {
-        height: auto;
-        width: 50%;
+    p.progressbar {
+        font-size: 12px;
+    }
+    .answer {
+        margin-bottom: 10px;
+        border-color: #505050;
+        color: #505050;
+        background-color: #fff;
+        white-space: normal;
+        font-size: 14px;
+        font-weight: 700;
+        border: 2px solid #505050;
+        border-radius: 10px;
+    }
+    .correctanswer {
+        border-color: #1caa28;
+        background-color: #fff;
+        color: #1caa28;
+    }
+    .wronganswer {
+        border-color: #f27575;
+        background-color: #fff;
+        color: #f27575;
+    }
+    .answer:hover {
+        background-color: #bfbfbf;
     }
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
-    /*
-    .navbar li a{
-    font-size:20px;
+    h1.tile-question-text {
+        font-size: 24px;
+        margin-top: 0px;
     }
-*/
-    
-    .smallpicture {
-        height: auto;
-        width: 45%;
+    p.progressbar {
+        font-size: 14px;
+    }
+    .answer {
+        margin-bottom: 10px;
+        border-color: #505050;
+        color: #505050;
+        background-color: #fff;
+        white-space: normal;
+        font-size: 20px;
+        font-weight: 700;
+        border: 2px solid #505050;
+        border-radius: 10px;
+    }
+    .correctanswer {
+        border-color: #1caa28;
+        background-color: #fff;
+        color: #1caa28;
+    }
+    .wronganswer {
+        border-color: #f27575;
+        background-color: #fff;
+        color: #f27575;
+    }
+    .answer:hover {
+        background-color: #bfbfbf;
     }
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
-    /*
-    .navbar li a{
-    font-size:26px;
+    h1.tile-question-text {
+        font-size: 26px;
+        margin-top: 0px;
     }
-*/
-    
-    .smallpicture {
-        height: auto;
-        width: 40%;
+    p.progressbar {
+        font-size: 12px;
+    }
+    .answer {
+        margin-bottom: 10px;
+        border-color: #505050;
+        color: #505050;
+        background-color: #fff;
+        white-space: normal;
+        font-size: 24px;
+        font-weight: 700;
+        border: 2px solid #505050;
+        border-radius: 10px;
+    }
+    .correctanswer {
+        border-color: #1caa28;
+        background-color: #fff;
+        color: #1caa28;
+    }
+    .wronganswer {
+        border-color: #f27575;
+        background-color: #fff;
+        color: #f27575;
+    }
+    .answer:hover {
+        background-color: #bfbfbf;
     }
 }
 
 @media (min-width: 980px) {
-    /*
-  .navbar li a{
-  font-size:30px;
-  }
-*/
-    
-    .smallpicture {
-        height: auto;
-        width: 50%;
+    h1.tile-question-text {
+        font-size: 30px;
+        margin-top: 0px;
+    }
+    p.progressbar {
+        font-size: 18px;
+    }
+    .answer {
+        margin-bottom: 10px;
+        border-color: #505050;
+        color: #505050;
+        background-color: #fff;
+        white-space: normal;
+        font-size: 24px;
+        font-weight: 700;
+        border: 2px solid #505050;
+        border-radius: 10px;
+    }
+    .correctanswer {
+        border-color: #1caa28;
+        background-color: #fff;
+        color: #1caa28;
+    }
+    .wronganswer {
+        border-color: #f27575;
+        background-color: #fff;
+        color: #f27575;
+    }
+    .answer:hover {
+        background-color: #bfbfbf;
     }
 }
 /******************************************************
@@ -644,14 +728,14 @@ body {
 */
     
     text-align: center;
-    border-radius: 15px;
+    border-radius: 10px;
     /*    margin: 10px;*/
     
     font-family: 'Lato', sans-serif;
 }
 
 .img-rounded {
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .progress {
@@ -660,38 +744,9 @@ body {
     background-color: #fff;
 }
 
-.answer {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-color: #505050;
-    color: #505050;
-    background-color: #fff;
-    white-space: normal;
-    font-weight: 700;
-    border: 2px solid #505050;
-    border-radius: 15px;
-    padding: 16px 20px;
-}
-
 .row {
     margin-left: 0px;
     margin-right: 0px;
-}
-
-.correctanswer {
-    border-color: #1caa28;
-    background-color: #fff;
-    color: #1caa28;
-}
-
-.wronganswer {
-    border-color: #f27575;
-    background-color: #fff;
-    color: #f27575;
-}
-
-.answer:hover {
-    background-color: #bfbfbf;
 }
 
 .startbutton {
@@ -707,6 +762,7 @@ body {
 
 .titleslide {
     /*background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://blogs.villagevoice.com/runninscared/got21.jpg');*/
+    
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -735,7 +791,7 @@ body {
     font-size: 15px;
     font-weight: bold;
 }
-
+/*
 body {
     margin-bottom: 40px;
     padding-top: 100px;
@@ -745,12 +801,4 @@ html {
     position: relative;
     min-height: 100%;
 }
-
-.logo-img {
-    height: 40%;
-    width: auto;
-}
-
-.menu {
-    background-color: rgba(255, 255, 255, 0.1);
-}
+*/
