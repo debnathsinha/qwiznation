@@ -753,12 +753,15 @@ body {
     background-color: #fff;
     border-radius: 50px;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 24px;
     border: 3px solid #1acc28;
     color: #1acc28;
 }
 
-.startbutton:hover {}
+.startbutton:hover {
+    color: #53ee5f;
+    border: 3px solid #53ee5f;
+}
 
 .titleslide {
     /*background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://blogs.villagevoice.com/runninscared/got21.jpg');*/
