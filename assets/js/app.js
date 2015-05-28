@@ -57,6 +57,7 @@ angular.module('qw', [])
 
     function setCurrentQuestion(question) {
 	$scope.currentQuestion = question;
+	$scope.selectQuestionSection();
     }
 
     $scope.isCurrentQuestionActive = isCurrentQuestionActive;
