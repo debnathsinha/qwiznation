@@ -4,7 +4,6 @@
               <li class="list-group-item properties-sidebar">
                 <p>Title Picture</p>
                 <input type="text" class="form-control" placeholder="URL to your title picture ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.pictureUrl">
-		<input type="file" name="img"/>
               </li>
               <li class="list-group-item properties-sidebar question-section">
                 <p>Question Text</p>
@@ -26,25 +25,25 @@
               </li>
               <li class="list-group-item properties-sidebar">
                 <p>Answer 1</p>
-                <div class="input-group"><span class="input-group-addon"><input type="{{currentAnswerType}}" aria-label="..."></span>
+                <div class="input-group"><span class="input-group-addon"><input type="{{currentAnswerType}}" name="answerselection" aria-label="..."></span>
                   <input type="text" class="form-control" placeholder="Enter Answer 1 here ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.answers[0]">
                 </div>
               </li>
               <li class="list-group-item properties-sidebar">
                 <p>Answer 2</p>
-                <div class="input-group"><span class="input-group-addon"><input type="{{currentAnswerType}}" aria-label="..."></span>
+                <div class="input-group"><span class="input-group-addon"><input type="{{currentAnswerType}}" name="answerselection" aria-label="..."></span>
                   <input type="text" class="form-control" placeholder="Enter Answer 2 here ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.answers[1]">
                 </div>
               </li>
               <li class="list-group-item properties-sidebar">
                 <p>Answer 3</p>
-                <div class="input-group"><span class="input-group-addon"><input type="{{currentAnswerType}}" aria-label="..."></span>
+                <div class="input-group"><span class="input-group-addon"><input type="{{currentAnswerType}}" name="answerselection" aria-label="..."></span>
                   <input type="text" class="form-control" placeholder="Enter Answer 3 here ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.answers[2]">
                 </div>
               </li>
               <li class="list-group-item properties-sidebar">
                 <p>Answer 4</p>
-                <div class="input-group"><span class="input-group-addon"><input type="{{currentAnswerType}}" aria-label="..."></span>
+                <div class="input-group"><span class="input-group-addon"><input type="{{currentAnswerType}}" name="answerselection" aria-label="..."></span>
                   <input type="text" class="form-control" placeholder="Enter Answer 4 here ..." aria-describedby="sizing-addon3" ng-model="currentQuestion.answers[3]">
                 </div>
               </li>
