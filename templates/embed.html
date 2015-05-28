@@ -32,91 +32,85 @@
 </head>
 
 <body ng-app="quiz" ng-controller="EmbedQuizController">
-{% raw %}
-  <div class="quiztile titleslide panel panel-default" ng-if="!startQuiz">
-    <div class="panel-body">
-      <div class="row">
-	<div class="col-xs-12" style="color:white;">
-          <h1><strong>{{ quiz.name }}</strong></h1>
-	</div>
-	<div class="col-xs-8 col-xs-offset-2" style="color: #909090;">
-          <h3><strong>{{ quiz.subtitle }}</strong></h3>
-	</div>
-      </div>
-      <div class="row margin-top-40 margin-bottom-40">
-	<div class="col-xs-6 col-xs-offset-3">
-          <button type="button" ng-click="launchQuiz()" class="btn btn-lg btn-block startbutton">Start!</button>
-	</div>
-      </div>
-    </div>
-    <div class="panel-footer">
-      <span class="footer-logo-text">Made with&nbsp;<img src='/assets/img/logo-text-100px.png' style="vertical-align: middle;"/></span>
-    </div>
-  </div>
-  
-  
-  <div class="quiztile panel panel-default" ng-if="startQuiz">
-    <div class="panel-body">
-      <div class="row">
-	<div class="col-xs-1 col-xs-offset-11 margin-top-10"><i class="fa fa-times"></i>
-	</div>
-	<div class="col-xs-8 col-xs-offset-2">
-          <div class="progress">
-            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-          </div>
-	</div>
-	<div class="col-xs-6 col-xs-offset-3 col-md-6 col-md-offset-3">
-          9 more to go!
-	</div>
-      </div>
-      <div class="row">
-	<div class="col-md-12">
-          <h1 class="">{{currentQuestion.text}}</h1>
-	</div>
-      </div>
-      <div class="row">
-	<div class="col-xs-8 col-xs-offset-2">
-          <img src="https://gotrecaps.files.wordpress.com/2013/08/tyrion-shae-sansa-310.jpg" class="titleimage img-rounded" />
-	</div>
-      </div>
-      <div class="row margin-top-30">
-	<div class="col-xs-12">
-          <div class="row">
-            <div class="col-xs-4 col-xs-offset-2">
-              <button type="button" ng-click="questionAnswered(0)" class="btn btn-lg btn-block answer">{{currentQuestion.answers[0]}}</button>
+    {% raw %}
+    <div class="quiztile titleslide panel panel-default" ng-if="!startQuiz">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12" style="color:white;">
+                    <h1><strong>{{ quiz.name }}</strong></h1>
+                </div>
+                <div class="col-xs-8 col-xs-offset-2" style="color: #909090;">
+                    <h3><strong>{{ quiz.subtitle }}</strong></h3>
+                </div>
             </div>
-            <div class="col-xs-4">
-              <button type="button" ng-click="questionAnswered(1)" class="btn btn-lg btn-block answer">{{currentQuestion.answers[1]}}</button>
+            <div class="row margin-top-40 margin-bottom-40">
+                <div class="col-xs-6 col-xs-offset-3">
+                    <button type="button" ng-click="launchQuiz()" class="btn btn-lg btn-block startbutton">Start!</button>
+                </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-4 col-xs-offset-2">
-              <button type="button" ng-click="questionAnswered(2)" class="btn btn-lg btn-block answer">{{currentQuestion.answers[2]}}</button>
-            </div>
-            <div class="col-xs-4">
-              <button type="button" ng-click="questionAnswered(3)" class="btn btn-lg btn-block answer">{{currentQuestion.answers[3]}}</button>
-            </div>
-          </div>
-	</div>
-        <div class="panel-footer">
-          <span class="footer-logo-text">Made with&nbsp;<img src='/assets/img/logo-text-100px.png' style="vertical-align: middle;"/></span>
         </div>
-      </div>
-
+        <div class="panel-footer">
+            <span class="footer-logo-text">Made with&nbsp;<img src='/assets/img/logo-text-100px.png' style="vertical-align: middle;"/></span>
+        </div>
     </div>
-    
-  </div>
-  
-</div>
 
-{% endraw %}
-<!-- jQuery -->
-<script src="/assets/js/jquery.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="/assets/js/bootstrap.min.js"></script>
-  
-<script src="/assets/js/embed.js"></script>
+    <div class="quiztile panel panel-default" ng-if="startQuiz">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-8 col-md-8 col-md-offset-2">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                    </div>
+                </div>
+                <div class="col-xs-1 col-xs-offset-2 col-md-1 col-md-offset-1"><i class="fa fa-times fa-2"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="title-question-text">{{currentQuestion.text}}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8 col-xs-offset-2 col-lg-6 col-lg-offset-3">
+                    <img src="https://gotrecaps.files.wordpress.com/2013/08/tyrion-shae-sansa-310.jpg" class="titleimage img-rounded" />
+                </div>
+            </div>
+            <div class="row margin-top-10">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-4 col-md-offset-2">
+                            <button type="button" ng-click="questionAnswered(0)" class="btn btn-lg btn-block answer">{{currentQuestion.answers[0]}}</button>
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            <button type="button" ng-click="questionAnswered(1)" class="btn btn-lg btn-block answer">{{currentQuestion.answers[1]}}</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-4 col-md-offset-2">
+                            <button type="button" ng-click="questionAnswered(2)" class="btn btn-lg btn-block answer">{{currentQuestion.answers[2]}}</button>
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            <button type="button" ng-click="questionAnswered(3)" class="btn btn-lg btn-block answer">{{currentQuestion.answers[3]}}</button>
+                        </div>
+
+                    </div>
+                    <div class="panel-footer">
+                        <span class="footer-logo-text">Made with&nbsp;<img src='/assets/img/logo-text-100px.png' style="vertical-align: middle;"/></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endraw %}
+            <!-- jQuery -->
+            <script src="/assets/js/jquery.js"></script>
+
+            <!-- Bootstrap Core JavaScript -->
+            <script src="/assets/js/bootstrap.min.js"></script>
+
+            <script src="/assets/js/embed.js"></script>
 </body>
 
 </html>

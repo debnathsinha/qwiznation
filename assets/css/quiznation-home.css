@@ -1,0 +1,64 @@
+/******************************************************
+  INDEX.HTML CSS
+********************************************************/
+
+.logo-img {
+    height: 40%;
+    width: auto;
+}
+
+.menu {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.feature-text {
+    line-height: 175%;
+}
+/******************
+  COLOURS
+******************/
+
+.red {
+    color: #e45f56;
+}
+
+.blue {
+    color: #3498db;
+}
+
+.light-blue {
+    color: #66b9f9;
+}
+
+.green {
+    color: #21bc5f;
+}
+
+.yellow {
+    color: #f7ea73;
+}
+
+.grey {
+    color: #95a5a6;
+}
+
+.white {
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.pink {
+    color: #d6487e;
+}
+
+.purple {
+    color: #7461aa;
+}
+
+.black {
+    color: #000;
+}
+
+.cyan {
+    color: #00c0e1;
+}
