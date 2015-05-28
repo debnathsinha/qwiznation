@@ -37,10 +37,10 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12" style="color:white;">
-                    <h1><strong>Game of Thrones Quiz</strong></h1>
+                    <h1><strong>{{ quiz.name }}</strong></h1>
                 </div>
                 <div class="col-xs-8 col-xs-offset-2" style="color: #909090;">
-                    <h3><strong>Which character are you?</strong></h3>
+                    <h3><strong>{{ quiz.subtitle }}</strong></h3>
                 </div>
             </div>
             <div class="row margin-top-40 margin-bottom-40">
@@ -68,7 +68,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="tile-question-text">What is Tyiron Lannister's name in real life?</h1>
+                    <h1 class="title-question-text">{{currentQuestion.text}}</h1>
                 </div>
             </div>
             <div class="row">
@@ -80,41 +80,37 @@
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-6 col-md-4 col-md-offset-2">
-                            <button type="button" class="btn btn-lg btn-block answer">Robert DeNiro</button>
+                            <button type="button" ng-click="questionAnswered(0)" class="btn btn-lg btn-block answer">{{currentQuestion.answers[0]}}</button>
                         </div>
                         <div class="col-xs-6 col-md-4">
-                            <button type="button" class="btn btn-lg btn-block answer wronganswer">Al Pacino</button>
+                            <button type="button" ng-click="questionAnswered(1)" class="btn btn-lg btn-block answer">{{currentQuestion.answers[1]}}</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-6 col-md-4 col-md-offset-2">
-                            <button type="button" class="btn btn-lg btn-block answer correctanswer">Peter Dinklage</button>
+                            <button type="button" ng-click="questionAnswered(2)" class="btn btn-lg btn-block answer">{{currentQuestion.answers[2]}}</button>
                         </div>
                         <div class="col-xs-6 col-md-4">
-                            <button type="button" class="btn btn-lg btn-block answer">Prince Charles</button>
+                            <button type="button" ng-click="questionAnswered(3)" class="btn btn-lg btn-block answer">{{currentQuestion.answers[3]}}</button>
                         </div>
+
                     </div>
+                    <div class="panel-footer">
+                        <span class="footer-logo-text">Made with&nbsp;<img src='/assets/img/logo-text-100px.png' style="vertical-align: middle;"/></span>
+                    </div>
+
                 </div>
 
             </div>
 
-        </div>
-        <div class="panel-footer">
-            <span class="footer-logo-text">Made with&nbsp;<img src='/assets/img/logo-text-100px.png' style="vertical-align: middle;"/></span>
-        </div>
+            {% endraw %}
+            <!-- jQuery -->
+            <script src="/assets/js/jquery.js"></script>
 
-    </div>
+            <!-- Bootstrap Core JavaScript -->
+            <script src="/assets/js/bootstrap.min.js"></script>
 
-    </div>
-
-    {% endraw %}
-    <!-- jQuery -->
-    <script src="/assets/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/assets/js/bootstrap.min.js"></script>
-
-    <script src="/assets/js/embed.js"></script>
+            <script src="/assets/js/embed.js"></script>
 </body>
 
 </html>
