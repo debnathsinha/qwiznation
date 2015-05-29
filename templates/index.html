@@ -84,25 +84,33 @@
                                 <div class="divider-border-inner" style="width:60px;"> </div>
                             </div>
                             <p class="lead text-center center element-bottom-40" data-os-animation="none" data-os-animation-delay="0s"></p>
-                            <div class="portfolio-container element-bottom-60">
+
+                            <div class="portfolio-container element-top-50 element-bottom-50">
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 text-center">
                                         <div class="portfolio-header clearfix">
-                                            <div class="portfolio-filters pull-right"> </div>
+                                            <div class="portfolio-filters">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-default portfolio-filter active" data-filter="*">All</button>
+                                                    <button type="button" class="btn btn-default portfolio-filter" data-filter=".filter-drinks">Drinks</button>
+                                                    <button type="button" class="btn btn-default portfolio-filter" data-filter=".filter-nature">Nature</button>
+                                                    <button type="button" class="btn btn-default portfolio-filter" data-filter=".filter-tech">Tech</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="portfolio masonry no-transition magnific-all" data-col-lg="4" data-col-md="4" data-col-sm="4" data-col-xs="2" data-layout="fitRows" data-padding="15">
+                                <div class="portfolio masonry no-transition" data-col-lg="4" data-col-md="4" data-col-sm="2" data-col-xs="2" data-layout="fitRows" data-padding="15">
                                     {% for quiz in quizzes %}
-                                    <div class="masonry-item portfolio-item filter-drinks filter-people" data-title="Quiz Tile Animation">
+                                    <div class="masonry-item portfolio-item filter-drinks filter-tech" data-title="Quiz Tile Animation">
                                         <div class="figure portfolio-os-animation image-filter-blur image-filter-onhover fade-in from-right text-center figcaption-middle normalwidth" data-os-animation="bounceInDown" data-os-animation-delay="0s">
                                             <a class="figure-image magnific-vimeo" href="http://vimeo.com/104566183" target="_self"> <img alt="Take this Quiz!" class="normalwidth" src="{{quiz.pic_url}}">
                                                 <div class="figure-overlay">
                                                     <div class="figure-overlay-container">
                                                         <div class="figure-caption">
-                                                            <h3 class="figure-caption-title bordered bordered-small">
-                                {{quiz.name}}<br>Click to Start!</h3>
-                                                            <p class="figure-caption-description">{{quiz.subtitle}}</p>
+                                                            <h3 class="figure-caption-title bordered bordered-small">{{quiz.name}}</h3>
+                                                            <p class="figure-caption-description">{{quiz.subtitle}}
+                                                                <br>Click to Start!</p>
                                                         </div>
                                                     </div>
                                                 </div>
